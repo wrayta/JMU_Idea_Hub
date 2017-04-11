@@ -11,7 +11,7 @@ public class StartWebApp {
         WebAppContext webapp = new WebAppContext();
         webapp.setContextPath("/");
         // change the name of the war as needed.
-        webapp.setWar("target/classes/JMUIdeaHub.war");
+        webapp.setWar("target/classes/JMUIdeaHub-1.0-SNAPSHOT.war");
         server.setHandler(webapp);
 
         server.start();
