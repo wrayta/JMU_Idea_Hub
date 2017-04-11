@@ -54,6 +54,12 @@ body {
     -moz-columns: 2 100px;
     -moz-column-rule: 1px solid rgb(147, 112, 219);
     -moz-column-gap: 40px;
+    -webkit-columns: 2 100px;
+    -webkit-column-rule: 1px solid rgb(147, 112, 219);
+    -webkit-column-gap: 40px;
+    columns: 2 100px;
+    column-rule: 1px solid rgb(147, 112, 219);
+    column-gap: 40px;
     margin: 20px 0px 0px;
     position: absolute;
     left: 50%;
