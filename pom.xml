@@ -5,7 +5,7 @@
     <groupId>com.thomas.wray</groupId>
     <artifactId>JMUIdeaHub</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
 
     <name>JMUIdeaHub</name>
 
