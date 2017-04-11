@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 14, 2017, 6:32:16 PM
+    Author     : thomas
+*/
+
+.form-error {
+    
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 20px;
+    color: #9370DB;
+}
+
+span.help {
+    display: inline-block;
+    color: #445668;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 23px;
+}
+
+#max-length-element {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    color: #9370DB;
+}
+
+#charCount {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    color: #9370DB;
+}
+
+#futurepreneurExist {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 23px;
+}
+
+#investorExist {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 23px;
+}
+
+#futurepreneurEditedExist {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 23px;
+}
+
+#investorEditedExist {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 0 23px;
+}

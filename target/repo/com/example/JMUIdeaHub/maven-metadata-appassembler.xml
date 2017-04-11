@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <groupId>com.thomas.wray</groupId>
-  <artifactId>artifact</artifactId>
+  <groupId>com.example</groupId>
+  <artifactId>JMUIdeaHub</artifactId>
   <versioning>
     <versions>
       <version>1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20170411140648</lastUpdated>
+    <lastUpdated>20170411154118</lastUpdated>
   </versioning>
 </metadata>
