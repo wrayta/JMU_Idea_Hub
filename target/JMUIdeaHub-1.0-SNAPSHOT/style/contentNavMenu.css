@@ -1,0 +1,91 @@
+body {
+    margin: 20px;
+    padding: 0;
+    background: #FFFFFF url(../img/shaking-hands.jpg);
+
+    /*background-size:800px 600px;*/
+    background-repeat:no-repeat;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #3C3728;
+    height: 100%
+}
+p {
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+h1 {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:16px;
+    font-weight:bold;
+    margin:0;
+    padding:0;
+}
+
+hr {
+    border:none;
+    border-top:1px solid #CCCCCC;
+    height:1px;
+    margin-bottom:25px;
+}
+
+#button {
+
+    height:20px; 
+    width:100px; 
+    margin: -100px -105px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+}  
+
+#contentNavigation {	
+    width: 700px;
+    height: 200px;
+    margin: 0 auto;
+
+}
+
+#contentNavigation a {
+    height: 32px;
+    /*voice-family: "\"}\"";*/ 
+    voice-family: inherit;
+    height: 24px;
+    text-decoration: none;
+}	
+
+
+#contentNavigation a:link, #menu a:visited {
+    color: #CCC;
+    display: block;
+    background:  url(../img/buttons.bmp);
+    height: 50px;
+    padding: 8px 0 0 10px;
+    text-align: center;
+}
+
+#contentNavigation a:hover {
+    color: #FFF;
+    background:  url(../img/buttons.bmp) 0 -80px;
+    height: 50px;
+    padding: 8px 0 0 10px;
+    text-align: center;
+}
+
+#contentNavigation a{
+    display: block;
+    float: left;
+    width: 200px;
+    height: 50px;
+    padding: 4px 0 0 0;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+
+    font-family: Georgia,"Times New Roman",Times,serif;
+    color: #FFFFFF;
+    font-size: 30px;
+}       

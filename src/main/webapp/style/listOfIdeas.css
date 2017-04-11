@@ -1,0 +1,86 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 4, 2017, 7:05:17 PM
+    Author     : thomas
+*/
+
+#ideasList {
+    margin: 40px 0 0 0;
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+div.panel {
+    padding: 0px 18px 0px 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-family: sans-serif;
+    font-size: 14px; 
+    /*color: #445668;*/
+    /*display: inline-block;*/
+}
+
+#listIdeaTitle {
+    display: inline-block;
+    float: left;
+}
+
+#listIdeaAuthor {
+    display: inline-block;
+    position: relative;
+/*    left: 50%;
+    transform: translateX(-50%);*/
+    margin: 0 0 0 150px;
+}
+
+#listIdeaDate {
+    display: inline-block;
+    float: right;
+}
+
+#listIdeaContent {
+    display: inline-block;
+}
+
+#moreIdea {
+    display: inline-block;
+    float: right;
+    font-family: 'Ranga', cursive;
+    font-size: 18px;
+    transform: translateY(-25%);
+}
+
+a.moreIdeaLink {
+    display: inline-block;
+    text-decoration: none;
+    color: #440088;
+}
+
+a.moreIdeaLink:hover {
+    color: #9370DB;
+}
