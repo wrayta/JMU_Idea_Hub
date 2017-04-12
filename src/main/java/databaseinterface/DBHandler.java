@@ -1,9 +1,13 @@
 package databaseinterface;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.naming.*;
 
@@ -24,23 +28,35 @@ public abstract class DBHandler {
      * Get parameters required to open DBMS connection.
      */
     public DBHandler() {
+//        try {
+//
+//            driverName = "com.mysql.jdbc.Driver";
+//            Class.forName(driverName);
+//            url = "jdbc:mysql://localhost:2010/jmu_idea_hub";
+//            userId = "root";
+//            password = "admin";
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        URI dbUri = null;
         try {
-
-            driverName = "com.mysql.jdbc.Driver";
-            Class.forName(driverName);
-            url = "jdbc:mysql://localhost:2010/jmu_idea_hub";
-            userId = "root";
-            password = "admin";
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        userId = dbUri.getUserInfo().split(":")[0];
+        password = dbUri.getUserInfo().split(":")[1];
+        url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
     }
 
     /*
      * Open the DB connection
      */
     public void open() throws SQLException {
+//        con = DriverManager.getConnection(url, userId, password);
         con = DriverManager.getConnection(url, userId, password);
+
         if (con != null) {
 	    System.out.println("You made it, take control your database now!");
 	} else {
