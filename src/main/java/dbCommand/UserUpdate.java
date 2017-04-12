@@ -5,11 +5,7 @@ import databaseinterface.DBCommandHandler;
 import entities.Futurepreneur;
 import entities.Investor;
 import entities.User;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Updates all tables that have to do with a user in the database

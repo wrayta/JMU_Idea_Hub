@@ -66,14 +66,14 @@ input {
     margin: 10px 0 20px 0; 
     background: #440088;
     border-radius: 5px; 
-/*    -moz-border-radius: 5px; 
-    -webkit-border-radius: 5px;
-    -moz-box-shadow: 0px 1px 0px #f2f2f2;
-    -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
+    /*    -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px;
+        -moz-box-shadow: 0px 1px 0px #f2f2f2;
+        -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
     font-family: sans-serif; 
     font-size: 16px; 
     color: #f2f2f2; 
-/*    text-transform: uppercase; */
+    /*    text-transform: uppercase; */
     text-shadow: 0px -1px 0px #334f71; 
 }
 /*input::-webkit-input-placeholder  {
@@ -92,10 +92,10 @@ textarea {
     margin: 0 0 10px 0; 
     background: #440088;
     border-radius: 5px; 
-/*    -moz-border-radius: 5px; 
-    -webkit-border-radius: 5px;
-    -moz-box-shadow: 0px 1px 0px #f2f2f2;
-    -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
+    /*    -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px;
+        -moz-box-shadow: 0px 1px 0px #f2f2f2;
+        -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
     font-family: sans-serif; 
     font-size: 16px; 
     color: #f2f2f2; 
@@ -153,19 +153,19 @@ a.register-futurepreneur-link {
     margin: 30px 5px 0 0;
     background: #440088;
     border-radius: 5px; 
-    
+
     font-family: sans-serif; 
     font-size: 16px; 
     color: #f2f2f2; 
     text-shadow: 0px -1px 0px #334f71;
-    
+
     border: 1px solid #440088;
     cursor: pointer;
 }
 
 a.register-investor-link {
     display: inline-block;
- 
+
     padding: 10px 15px 10px 15px; 
     margin: 30px 5px 0 0;
     background: #440088;
@@ -175,7 +175,7 @@ a.register-investor-link {
     font-size: 16px; 
     color: #f2f2f2; 
     text-shadow: 0px -1px 0px #334f71;
-    
+
     border: 1px solid #440088;
     cursor: pointer;
 }
@@ -191,28 +191,28 @@ a.register-investor-link {
 }*/
 
 input[type=submit] {
-/*    display: inline-block;*/
-/*    width: 100px; 
-    height: 52px; */
+    /*    display: inline-block;*/
+    /*    width: 100px; 
+        height: 52px; */
     /*float: left;*/ 
     padding: 10px 15px; 
     margin: 0 15px 0 0;
-/*    -moz-box-shadow: 0px 0px 5px #999;
-    -webkit-box-shadow: 0px 0px 5px #999;*/
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
     border: 1px solid #440088;
     cursor: pointer;
     /*text-transform: uppercase;*/
 }
 
 input[type=reset] {
-/*    display: inline-block;*/
-/*    width: 100px; 
-    height: 52px; */
+    /*    display: inline-block;*/
+    /*    width: 100px; 
+        height: 52px; */
     /*float: left;*/ 
     padding: 10px 15px; 
     margin: 0 15px 0 0;
-/*    -moz-box-shadow: 0px 0px 5px #999;
-    -webkit-box-shadow: 0px 0px 5px #999;*/
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
     border: 1px solid #440088;
     cursor: pointer;
     /*text-transform: uppercase;*/
@@ -359,13 +359,13 @@ input[type=reset] {
 input[type=button]{
     /*position: absolute;*/
     display: inline-block;
-/*    width: 185px; 
-    height: 62px; */
+    /*    width: 185px; 
+        height: 62px; */
     /*float: right;*/ 
     padding: 10px 15px; 
     margin: 30px 5px 0 0;
-/*    -moz-box-shadow: 0px 0px 5px #999;
-    -webkit-box-shadow: 0px 0px 5px #999;*/
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
     border: 1px solid #440088;
     cursor: pointer;
     /*text-transform: uppercase;*/

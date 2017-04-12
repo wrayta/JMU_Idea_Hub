@@ -2,7 +2,6 @@ package dbCommand;
 
 import databaseinterface.DBCommandHandler;
 import entities.Comment;
-import entities.Idea;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +15,7 @@ public class CommentUpdate {
 
     /**
      * Adds a comment to the database
+     *
      * @param com
      * @return true if added successfully
      */

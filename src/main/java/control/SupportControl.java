@@ -7,7 +7,6 @@ package control;
 
 import dbCommand.SupportUpdate;
 import dbQuery.SupportQuery;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -65,28 +64,26 @@ public class SupportControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Boolean notAlreadySupported = true;
         SupportQuery query = new SupportQuery();
-        
+
         notAlreadySupported = query.notAlreadySupp((Integer) (request.getSession().getAttribute("accountNumber")),
                 Integer.parseInt(request.getParameter("supportNumber")));
-        
+
         log(request.getParameter("supportNumber"));
-                
-        if(notAlreadySupported) {
+
+        if (notAlreadySupported) {
             doIncrementSupps(request, response);
-        }
-        
-        else {
+        } else {
             doDecrementSupps(request, response);
         }
-        
+
 //        log(request.getParameter("supportNumber"));
 //        doIncrementSupps(request, response);
     }
 
-    /** 
+    /**
      * Decrements the supports
      */
     private void doDecrementSupps(HttpServletRequest request, HttpServletResponse response) {
@@ -109,7 +106,7 @@ public class SupportControl extends HttpServlet {
         out.print("" + newSupps);
 
     }
-    
+
     /**
      * Increments the supports
      *

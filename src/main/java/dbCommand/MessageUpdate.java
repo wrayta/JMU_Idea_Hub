@@ -1,7 +1,6 @@
 package dbCommand;
 
 import databaseinterface.DBCommandHandler;
-import entities.Idea;
 import entities.Message;
 import java.sql.SQLException;
 import java.util.logging.Level;

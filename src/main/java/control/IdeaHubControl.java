@@ -1,11 +1,9 @@
 package control;
 
-import dbCommand.CommentUpdate;
 import dbCommand.IdeaUpdate;
 import dbCommand.MessageUpdate;
 import dbCommand.UserUpdate;
 import dbQuery.UserQuery;
-import entities.Comment;
 import entities.ErrorChecker;
 import entities.Futurepreneur;
 import entities.Idea;
@@ -15,7 +13,6 @@ import entities.User;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.math.BigInteger;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,7 +20,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 //import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,7 +34,7 @@ import java.util.Calendar;
 
 /**
  * Main servlet for the web application and handles most requests
- * 
+ *
  * @author Joe Otis Thomas Wray
  */
 public class IdeaHubControl extends HttpServlet {
@@ -86,7 +82,7 @@ public class IdeaHubControl extends HttpServlet {
             throws ServletException, IOException {
 
         System.out.println("Inside doGet");
-        
+
         RequestDispatcher dispatcher;
 
         if (request.getParameter("ideaNum") != null) {
@@ -118,9 +114,8 @@ public class IdeaHubControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException { // DO ERROR CHECKINGGGG!!!!!!!!
         // TO SELECT a major query for the majors and put in drop down
-        
+
 //        System.out.println("Inside doPost");
-        
         String url = null;
         try {
             url = new URI(request.getHeader("referer")).getPath();
@@ -141,7 +136,7 @@ public class IdeaHubControl extends HttpServlet {
 //                doUpdateIdea(request, response);
             } else if (url.indexOf("idea") > 0) {
 //                System.out.println("Inside indexOf(idea)");
-                
+
                 if (request.getParameter("updateIdeaNumber") != null) {
 //                    System.out.println("Inside update idea...");
                     doUpdateIdea(request, response);
@@ -151,7 +146,7 @@ public class IdeaHubControl extends HttpServlet {
 //                    System.out.println("Inside add idea...");
                     doAddIdea(request, response);
                 }
-                
+
             } else if (url.indexOf("forgotPass") > 0) {
                 doRememberPass(request, response);
             } else if (url.indexOf("editFuturepreneur") > 0) {
@@ -166,7 +161,7 @@ public class IdeaHubControl extends HttpServlet {
         }
 
     }
-    
+
 //    @Override
 //    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
@@ -200,7 +195,6 @@ public class IdeaHubControl extends HttpServlet {
 //
 //        ErrorChecker err = new ErrorChecker();
         //out.print(request.getParameter("investorFirstName"));
-
 //        if (!err.validFirstName(request.getParameter("investorFirstName"))) {
 //            added = false;
 //            msg += "<p>Invalid First Name: Must be smaller than 30 characters</p>";
@@ -241,17 +235,16 @@ public class IdeaHubControl extends HttpServlet {
 //            added = false;
 //            msg += "<p>Invalid Website: Must be less than 60 characters</p>";
 //        }
-
         if (added) {
             String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
 
             Investor inv = new Investor(request.getParameter("investorFirstName"),
-                    request.getParameter("investorLastName"), 
+                    request.getParameter("investorLastName"),
                     request.getParameter("investorEmail"),
-                    password, 
-                    request.getParameter("investorUsername"), 
+                    password,
+                    request.getParameter("investorUsername"),
                     request.getParameter("occupation"),
-                    request.getParameter("interests"), 
+                    request.getParameter("interests"),
                     request.getParameter("website"),
                     (Integer) request.getSession().getAttribute("accountNumber"));
 
@@ -332,20 +325,19 @@ public class IdeaHubControl extends HttpServlet {
 //            added = false;
 //            msg += "<p>Invalid Graduation Date: Must be smaller than 50 characters</p>";
 //        }
-
         if (added) {
             String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
 
             Futurepreneur fut = new Futurepreneur(request.getParameter("futurepreneurFirstName"),
-                    request.getParameter("futurepreneurLastName"), 
-                    request.getParameter("futurepreneurEmail"), 
-                    password, 
-                    request.getParameter("futurepreneurUsername"), 
-                    request.getParameter("gradesel"), 
-                    request.getParameter("year"), 
-                    Double.parseDouble(request.getParameter("gpa")), 
-                    Integer.parseInt(request.getParameter("majors")), 
-                    Integer.parseInt(request.getParameter("minors")), 
+                    request.getParameter("futurepreneurLastName"),
+                    request.getParameter("futurepreneurEmail"),
+                    password,
+                    request.getParameter("futurepreneurUsername"),
+                    request.getParameter("gradesel"),
+                    request.getParameter("year"),
+                    Double.parseDouble(request.getParameter("gpa")),
+                    Integer.parseInt(request.getParameter("majors")),
+                    Integer.parseInt(request.getParameter("minors")),
                     (Integer) request.getSession().getAttribute("accountNumber"));
 
             update.updateFut(fut);
@@ -470,22 +462,20 @@ public class IdeaHubControl extends HttpServlet {
 //            added = false;
 //            msg += "<p>Idea must be less than 500 characters</p>";
 //        }
-
         if (added) {
             System.out.println("Make it inside of added?");
-            
+
             idea = new Idea(((Integer) sesh.getAttribute("accountNumber")).intValue(),
                     request.getParameter("idea"), request.getParameter("title")
             );
             IdeaUpdate update = new IdeaUpdate();
             update.addIdea(idea);
-            
+
             IdeaQuery ideaQ = new IdeaQuery();
-       
+
 //        ArrayList<Object> ideaData = ideaQ.getIdeas();
             ArrayList<Object> ideaData = ideaQ.getIdeasForMonth(request.getParameter("latestMonth"));
 
-        
             sesh.setAttribute("ideaData", ideaData);
             request.getRequestDispatcher("/idea.jsp").forward(request, response);
 
@@ -494,9 +484,6 @@ public class IdeaHubControl extends HttpServlet {
 //            } catch (IOException ex) {
 //                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-            
-            
-            
 //        } else {
 //            sesh.setAttribute("errMsg", msg);
 //            try {
@@ -508,59 +495,58 @@ public class IdeaHubControl extends HttpServlet {
 
         return added;
     }
-    
+
     /**
      * Updates an existing idea
-     * 
+     *
      * @param request
      * @param response
-     * @return 
+     * @return
      */
     private boolean doUpdateIdea(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean added = true;
 
         HttpSession sesh = request.getSession(true);
-        
+
         Idea idea;
-        
-        if(added) {
-            
+
+        if (added) {
+
             System.out.println("Inside doUpdateIdea added if-statement");
-            
+
             int accountNumber = ((Integer) sesh.getAttribute("accountNumber")).intValue();
-            
+
             System.out.println("Inside doUpdateIdea after accountNumber: " + accountNumber);
-            
+
             String ideaContent = request.getParameter("ideaContent");
-            
+
             System.out.println("Inside doUpdateIdea after ideaContent: " + ideaContent);
-            
+
             int ideaNumber = Integer.parseInt(request.getParameter("updateIdeaNumber"));
-            
+
             System.out.println("Inside doUpdateIdea after ideaNumber: " + ideaNumber);
 
             int supports = Integer.parseInt(request.getParameter("supports"));
-            
+
             System.out.println("Inside doUpdateIdea after supports: " + supports);
 
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("'Modified:' MMMM dd, yyyy 'at' hh:mm a");
             String modifiedDate = sdf.format(new java.util.Date()).toString();
-            
+
             String ideaTitle = request.getParameter("ideaTitle");
-            
+
             System.out.println("Inside doUpdateIdea after ideaTitle: " + ideaTitle);
 
-            
             idea = new Idea(accountNumber, ideaContent, ideaNumber, supports, modifiedDate, ideaTitle);
-            
+
             IdeaUpdate update = new IdeaUpdate();
             update.updateIdea(idea);
-            
+
             IdeaQuery ideaQ = new IdeaQuery();
             ArrayList<Object> ideaData = ideaQ.getIdeasForMonth(request.getParameter("latestMonth"));
             sesh.setAttribute("ideaData", ideaData);
             request.getRequestDispatcher("/idea.jsp").forward(request, response);
-            
+
 //            try {
 //                response.sendRedirect("./idea.jsp");
 //            } catch (IOException ex) {
@@ -569,47 +555,44 @@ public class IdeaHubControl extends HttpServlet {
         }
         return added;
     }
-    
+
     /**
      * deletes an existing idea
-     * 
+     *
      * @param request
-     * @param response 
+     * @param response
      */
     private boolean doDeleteIdea(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean added = true;
         HttpSession sesh = request.getSession(true);
         Idea idea;
 
-
         if (added) {
             System.out.println("Inside IdeaHubControl doDeleteIdea after added...");
-            
+
             int accountNumber = ((Integer) sesh.getAttribute("accountNumber")).intValue();
             System.out.println("Inside doUpdateIdea after accountNumber: " + accountNumber);
-            
+
             String ideaContent = request.getParameter("ideaContent");
             System.out.println("Inside doUpdateIdea after ideaContent: " + ideaContent);
-                        
+
             int ideaNumber = Integer.parseInt(request.getParameter("deleteIdeaNumber"));
             System.out.println("Inside doUpdateIdea after ideaNumber: " + ideaNumber);
 
             int supports = Integer.parseInt(request.getParameter("supports"));
             System.out.println("Inside doUpdateIdea after supports: " + supports);
 
-            
             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("'Deleted:' MMMM dd, yyyy 'at' hh:mm a");
             String deletedDate = sdf.format(new java.util.Date()).toString();
-            
+
             String ideaTitle = request.getParameter("ideaTitle");
             System.out.println("Inside doUpdateIdea after ideaTitle: " + ideaTitle);
 
-
             idea = new Idea(accountNumber, ideaContent, ideaNumber, supports, deletedDate, ideaTitle);
-            
+
             IdeaUpdate update = new IdeaUpdate();
             update.deleteIdea(idea);
-            
+
             IdeaQuery ideaQ = new IdeaQuery();
             ArrayList<Object> ideaData = ideaQ.getIdeasForMonth(request.getParameter("latestMonth"));
             sesh.setAttribute("ideaData", ideaData);
@@ -628,37 +611,37 @@ public class IdeaHubControl extends HttpServlet {
     }
 
     /**
-     * 
+     *
      */
     private void doGetIdeasForMonth(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Inside doGetIdeasForMonth");  
+        System.out.println("Inside doGetIdeasForMonth");
         HttpSession sesh = request.getSession(true);
 
         IdeaQuery ideaQ = new IdeaQuery();
-       
+
 //        ArrayList<Object> ideaData = ideaQ.getIdeas();
         ArrayList<Object> ideaData = ideaQ.getIdeasForMonth(request.getParameter("currentMonth"));
 
-        
-        sesh.setAttribute("ideaData", ideaData); 
+        sesh.setAttribute("ideaData", ideaData);
         request.getRequestDispatcher("/idea.jsp").forward(request, response);
 
     }
-    
+
     /**
-     * 
+     *
      * @param num
-     * @return 
+     * @return
      */
     String getMonthForInt(int num) {
         String month = "wrong";
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
-        if (num >= 0 && num <= 11 ) {
+        if (num >= 0 && num <= 11) {
             month = months[num];
         }
         return month;
     }
+
     /**
      * Signs a user in
      *
@@ -675,7 +658,7 @@ public class IdeaHubControl extends HttpServlet {
         if (query.checkPass(request.getParameter("user").toLowerCase(), IdeaHubControl.hashPassword(request.getParameter("password")))) {
             sesh.setAttribute("loggedin", true);
             sesh.setAttribute("accountNumber", new Integer(query.getAccountNum(request.getParameter("user"))));
-            
+
             String monthStr = getMonthForInt(month);
             ArrayList<Object> ideaData = ideaQuery.getIdeasForMonth(monthStr);
 //            System.out.println("ideaData in IdeaHubControl size: " + ideaData.size());
@@ -754,24 +737,23 @@ public class IdeaHubControl extends HttpServlet {
 //            added = false;
 //            msg += "<p>Invalid Website: Must be less than 60 characters</p>";
 //        }
-
 //        if (added) {
-            person = new Investor(request.getParameter("investorFirstName"),
-                    request.getParameter("investorLastName"),
-                    request.getParameter("investorEmail"),
-                    password, request.getParameter("investorUsername"), request.getParameter("occupation"),
-                    request.getParameter("interests"), request.getParameter("website"));
+        person = new Investor(request.getParameter("investorFirstName"),
+                request.getParameter("investorLastName"),
+                request.getParameter("investorEmail"),
+                password, request.getParameter("investorUsername"), request.getParameter("occupation"),
+                request.getParameter("interests"), request.getParameter("website"));
 
-            UserUpdate update = new UserUpdate();
-            update.addUser(person);
+        UserUpdate update = new UserUpdate();
+        update.addUser(person);
 
-            sesh.setAttribute("loggedin", true);
-            sesh.setAttribute("accountNumber", new Integer(query.getNextAccountNum()));
-            try {
-                response.sendRedirect("./idea.jsp");
-            } catch (IOException ex) {
-                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        sesh.setAttribute("loggedin", true);
+        sesh.setAttribute("accountNumber", new Integer(query.getNextAccountNum()));
+        try {
+            response.sendRedirect("./idea.jsp");
+        } catch (IOException ex) {
+            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 //        } else {
 //
@@ -784,7 +766,6 @@ public class IdeaHubControl extends HttpServlet {
 //                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
-
         return added;
     }
 
@@ -846,28 +827,27 @@ public class IdeaHubControl extends HttpServlet {
 //        }
 //
 //        if (added) {
-            String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
+        String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
 
-            person = new Futurepreneur(request.getParameter("futurepreneurFirstName"),
-                    request.getParameter("futurepreneurLastName"),
-                    request.getParameter("futurepreneurEmail"),
-                    password, request.getParameter("futurepreneurUsername"),
-                    request.getParameter("gradesel"), request.getParameter("year"),
-                    Double.parseDouble(request.getParameter("gpa")), Integer.parseInt(request.getParameter("majors")),
-                    Integer.parseInt(request.getParameter("minors")));
-            
-            
-            UserUpdate update = new UserUpdate();
-            update.addUser(person);
+        person = new Futurepreneur(request.getParameter("futurepreneurFirstName"),
+                request.getParameter("futurepreneurLastName"),
+                request.getParameter("futurepreneurEmail"),
+                password, request.getParameter("futurepreneurUsername"),
+                request.getParameter("gradesel"), request.getParameter("year"),
+                Double.parseDouble(request.getParameter("gpa")), Integer.parseInt(request.getParameter("majors")),
+                Integer.parseInt(request.getParameter("minors")));
 
-            sesh.setAttribute("loggedin", true);
-            sesh.setAttribute("accountNumber", query.getNextAccountNum());
+        UserUpdate update = new UserUpdate();
+        update.addUser(person);
 
-            try {
-                response.sendRedirect("idea.jsp");
-            } catch (IOException ex) {
-                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        sesh.setAttribute("loggedin", true);
+        sesh.setAttribute("accountNumber", query.getNextAccountNum());
+
+        try {
+            response.sendRedirect("idea.jsp");
+        } catch (IOException ex) {
+            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 //        } else {
 //            sesh.setAttribute("errMsg", msg);
@@ -878,7 +858,6 @@ public class IdeaHubControl extends HttpServlet {
 //            }
 //
 //        }
-
         return added;
     }
 

@@ -3,8 +3,6 @@ package entities;
 import dbQuery.IdeaQuery;
 import dbQuery.SupportQuery;
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * Represents an Idea
@@ -164,7 +162,7 @@ public class Idea {
      * @return date created
      */
     public String getDate() {
-        
+
         return date;
     }
 

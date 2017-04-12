@@ -5,10 +5,6 @@
  */
 package entities;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -117,7 +113,7 @@ public class ErrorChecker {
     public boolean validGradDate(String date) {
         boolean isTrue = true;
 
-        if ( date.trim().length() > 50 || date.trim().length() < 1 ) {
+        if (date.trim().length() > 50 || date.trim().length() < 1) {
             isTrue = false;
         }
 
@@ -202,14 +198,15 @@ public class ErrorChecker {
     }
 
     public boolean validateUsername(String word) {
-        
+
         System.out.println("The value of the word is: " + word);
-        
+
         String regEx = "^[\\pL\\pN]+$";
-        
-        return ( Pattern.matches(regEx, word) && (word.length() >= 3) && (word.length() <= 12) );
+
+        return (Pattern.matches(regEx, word) && (word.length() >= 3) && (word.length() <= 12));
 
     }
+
     /**
      * Makes sure the password is at least 8 chars and under the max amount
      *
@@ -222,11 +219,11 @@ public class ErrorChecker {
         return Pattern.matches(regEx, word);
 
     }
-    
+
     public boolean validateDate(String date) {
-         String regEx = "\\d{4}-\\d{2}-\\d{2}";
-         
-         return Pattern.matches(regEx, date);
+        String regEx = "\\d{4}-\\d{2}-\\d{2}";
+
+        return Pattern.matches(regEx, date);
     }
 
     /**
@@ -264,19 +261,19 @@ public class ErrorChecker {
     public boolean validLastName(String name) {
         boolean isTrue = true;
 
-            if (name != null) {
-                if (name.trim().length() > 40 || name.trim().length() < 1) {
-                    isTrue = false;
-
-                }
-
-                if (isTrue) {
-                    isTrue = validateInput(name);
-                }
-            } else {
+        if (name != null) {
+            if (name.trim().length() > 40 || name.trim().length() < 1) {
                 isTrue = false;
 
             }
+
+            if (isTrue) {
+                isTrue = validateInput(name);
+            }
+        } else {
+            isTrue = false;
+
+        }
 
         return isTrue;
     }

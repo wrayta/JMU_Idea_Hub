@@ -1,7 +1,6 @@
 package dbQuery;
 
 import databaseinterface.DBQueryHandler;
-import entities.Idea;
 import entities.Message;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

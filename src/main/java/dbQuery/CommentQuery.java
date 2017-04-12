@@ -2,9 +2,6 @@ package dbQuery;
 
 import databaseinterface.DBQueryHandler;
 import entities.Comment;
-import entities.Idea;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

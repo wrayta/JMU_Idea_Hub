@@ -53,8 +53,8 @@ div.panel {
 #listIdeaAuthor {
     display: inline-block;
     position: relative;
-/*    left: 50%;
-    transform: translateX(-50%);*/
+    /*    left: 50%;
+        transform: translateX(-50%);*/
     margin: 0 0 0 150px;
 }
 

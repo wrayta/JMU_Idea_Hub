@@ -30,18 +30,18 @@ and open the template in the editor.
         <%
             Investor user = (Investor) userQ.getInv((Integer) (request.getSession().getAttribute("accountNumber")));
         %> 
-        
+
         <script>
-            function checkExist(){
+            function checkExist() {
                 var xmlhttp = new XMLHttpRequest();
                 var username = encodeURIComponent(document.forms["editInvestor"]["investorUsername"].value);
                 var url = "username?editedUsername=" + username
                         + "&accountNumber=" + <%= request.getSession().getAttribute("accountNumber")%>;
 
-                xmlhttp.onreadystatechange = function(){
-                    if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        if(xmlhttp.responseText == "User already exists"
-                            || xmlhttp.responseText == "User name is invalid") {
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        if (xmlhttp.responseText == "User already exists"
+                                || xmlhttp.responseText == "User name is invalid") {
                             document.getElementById("investorEditedExist").style.color = "red";
                             document.getElementById("investorUsernameInputEditId").className = "error";
                         }
@@ -49,20 +49,20 @@ and open the template in the editor.
                             document.getElementById("investorEditedExist").style.color = "green";
                         }
                         document.getElementById("investorEditedExist").innerHTML = xmlhttp.responseText;
-                        
+
                     }
 
                 };
 
-                try{
+                try {
                     xmlhttp.open("GET", url, true);
                     xmlhttp.send();
-                }catch(e) {
+                } catch (e) {
                     alert("unable to connect to server");
                 }
             }
         </script>
-        
+
     </head>
     <body>
         <%
@@ -92,188 +92,186 @@ and open the template in the editor.
                     </div>
 
                     <p>
-                        <div id="investorLastName">
-                            <label>Last Name:</label>
-                            <input type="text" 
-                                   value="<%=user.getLastName()%>"
-                                   data-validation="alphanumeric" 
-                                   data-validation="required" 
-                                   data-validation-allowing="-_"
-                                   name="investorLastName"
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorLastName">
+                        <label>Last Name:</label>
+                        <input type="text" 
+                               value="<%=user.getLastName()%>"
+                               data-validation="alphanumeric" 
+                               data-validation="required" 
+                               data-validation-allowing="-_"
+                               name="investorLastName"
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorEmail">
-                            <label>Email:</label>
-                            <input type="text" 
-                                   value="<%=user.getEmail()%>"
-                                   data-validation="email"
-                                   name="investorEmail"
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorEmail">
+                        <label>Email:</label>
+                        <input type="text" 
+                               value="<%=user.getEmail()%>"
+                               data-validation="email"
+                               name="investorEmail"
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorOccupation">
-                            <label>Occupation:</label>
-                            <input type="text"
-                                   value="<%=user.getOccupation()%>"
-                                   data-validation="alphanumeric"
-                                   name="occupation"
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorOccupation">
+                        <label>Occupation:</label>
+                        <input type="text"
+                               value="<%=user.getOccupation()%>"
+                               data-validation="alphanumeric"
+                               name="occupation"
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorInterests">
-                            <label>Interests:</label>
-                            <textarea id="interestTextArea" onchange="enableBeforeUnload();"
-                                      onkeyup="enableBeforeUnload();" name="interests"><%=user.getInterest()%></textarea>    
-                            <span id="max-length-element">200</span> <div id="charCount">chars left</div>
-                        </div>
+                    <div id="investorInterests">
+                        <label>Interests:</label>
+                        <textarea id="interestTextArea" onchange="enableBeforeUnload();"
+                                  onkeyup="enableBeforeUnload();" name="interests"><%=user.getInterest()%></textarea>    
+                        <span id="max-length-element">200</span> <div id="charCount">chars left</div>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorWebsite">
-                            <label>Website:</label>
-                            <input type="text"
-                                   value="<%=user.getWebsite()%>"
-                                   data-validation="url"
-                                   data-validation-help="http://"
-                                   name="website" 
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorWebsite">
+                        <label>Website:</label>
+                        <input type="text"
+                               value="<%=user.getWebsite()%>"
+                               data-validation="url"
+                               data-validation-help="http://"
+                               name="website" 
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorUserName">
-                            <label>User Name:</label>
-                            <input type="text" 
-                                   value="<%=user.getUserName()%>"
-                                   data-validation="length alphanumeric" 
-                                   data-validation-length="3-12" 
-                                   data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
-                                   name="investorUsername" 
-                                   id="investorUsernameInputEditId"
-                                   onblur="checkExist();"
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                                   <span id="investorEditedExist"></span>
-                        </div>
+                    <div id="investorUserName">
+                        <label>User Name:</label>
+                        <input type="text" 
+                               value="<%=user.getUserName()%>"
+                               data-validation="length alphanumeric" 
+                               data-validation-length="3-12" 
+                               data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
+                               name="investorUsername" 
+                               id="investorUsernameInputEditId"
+                               onblur="checkExist();"
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                        <span id="investorEditedExist"></span>
+                    </div>
                     </p>
 
                     <p>
-                        <div id="investorPassword0">
-                            <label>Password:</label>
-                            <input type="password" 
-                                   data-validation="strength" 
-                                   data-validation-strength="2"
-                                   data-validation-error-msg="The password isn't strong enough (must include a number or special character)"
-                                   name="pwd1_confirmation" 
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorPassword0">
+                        <label>Password:</label>
+                        <input type="password" 
+                               data-validation="strength" 
+                               data-validation-strength="2"
+                               data-validation-error-msg="The password isn't strong enough (must include a number or special character)"
+                               name="pwd1_confirmation" 
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
-                    
+
                     <p>
-                        <div id="investorPassword1">
-                            <label>Confirm Password:</label>
-                            <input type="password" 
-                                   data-validation="confirmation"
-                                   name="pwd1"
-                                   onchange="enableBeforeUnload();"
-                                   onkeyup="enableBeforeUnload();"/>
-                        </div>
+                    <div id="investorPassword1">
+                        <label>Confirm Password:</label>
+                        <input type="password" 
+                               data-validation="confirmation"
+                               name="pwd1"
+                               onchange="enableBeforeUnload();"
+                               onkeyup="enableBeforeUnload();"/>
+                    </div>
                     </p>
 
                 </fieldset>
 
                 <p>
-                
-                    <div id="registerInvestor">
 
-                        <input type="submit" value="Update" id="investorRegisterSubmitButton"/>
+                <div id="registerInvestor">
 
-                        <a href="idea.jsp"><input type="button" value="Cancel" id="investorRegisterCancelButton"/></a>
+                    <input type="submit" value="Update" id="investorRegisterSubmitButton"/>
 
-                        <input type="reset" value="Reset Form" id="investorRegisterResetButton"/> 
+                    <a href="idea.jsp"><input type="button" value="Cancel" id="investorRegisterCancelButton"/></a>
 
-                    </div>
+                    <input type="reset" value="Reset Form" id="investorRegisterResetButton"/> 
+
+                </div>
                 </p>
 
             </form>
-            
+
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
             <script>
 
-                $.validate({
-                  form : '#investor-edit-form',
-                  ignore: ['#investorInterests', '#investorWebsite' ],
+                                   $.validate({
+                                       form: '#investor-edit-form',
+                                       ignore: ['#investorInterests', '#investorWebsite'],
 //                  validateOnBlur : false,
-                  borderColorOnError : '#440088',
-                  modules : 'date, security',
+                                       borderColorOnError: '#440088',
+                                       modules: 'date, security',
+                                       //              onError : function($form) {
+                                       //                alert('Validation of form '+$form.attr('id')+' failed!');
+                                       //              },
 
+                                       //              onSuccess : function($form) {
+                                       //                alert('The form '+$form.attr('id')+' is valid!');
+                                       //                return false; // Will stop the submission of the form
+                                       //              },
 
-    //              onError : function($form) {
-    //                alert('Validation of form '+$form.attr('id')+' failed!');
-    //              },
+                                       //              onValidate : function($form) {
+                                       //                return {
+                                       //                    element : $('#gradesel'),
+                                       //                    message : 'This input has an invalid value for some reason'
+                                       //                }
+                                       //              },
 
-    //              onSuccess : function($form) {
-    //                alert('The form '+$form.attr('id')+' is valid!');
-    //                return false; // Will stop the submission of the form
-    //              },
+                                       //              onElementValidate : function(valid, $el, $form, errorMess) {
+                                       //                alert('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
+                                       //              }
 
-    //              onValidate : function($form) {
-    //                return {
-    //                    element : $('#gradesel'),
-    //                    message : 'This input has an invalid value for some reason'
-    //                }
-    //              },
+                                   });
+                                   $('#interestTextArea').restrictLength($('#max-length-element'));
 
-    //              onElementValidate : function(valid, $el, $form, errorMess) {
-    //                alert('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
-    //              }
+                                   // Restrict presentation length
+                                   //            $('#presentation').restrictLength( $('#pres-max-length') );
 
-                });
-                $('#interestTextArea').restrictLength( $('#max-length-element') );
+                                   $(document).ready(function() {
+                                       $('form input[type=submit]').click(function() {
+                                           return confirm('Confirm user profile update...');
+                                       });
 
-                // Restrict presentation length
-    //            $('#presentation').restrictLength( $('#pres-max-length') );
+                                       $('form input[type=reset]').click(function() {
+                                           return confirm('Are you sure you want to clear all fields?');
+                                       });
 
-                $(document).ready(function() {
-                    $('form input[type=submit]').click(function() {
-                        return confirm('Confirm user profile update...');
-                    });
-
-                    $('form input[type=reset]').click(function() {
-                        return confirm('Are you sure you want to clear all fields?');
-                    });
-                    
 //                    $('form input[type=button]').click(function() {
 //                        return confirm('Leave current page?');
 //                    });
-                });
-                
-                function enableBeforeUnload() {
-                    window.onbeforeunload = function (e) {
-                        return "Discard changes?";
-                    };
-                }
-                function disableBeforeUnload() {
-                    window.onbeforeunload = null;
-                }
+                                   });
+
+                                   function enableBeforeUnload() {
+                                       window.onbeforeunload = function(e) {
+                                           return "Discard changes?";
+                                       };
+                                   }
+                                   function disableBeforeUnload() {
+                                       window.onbeforeunload = null;
+                                   }
             </script>
 
         </div>
-        
+
         <div style="clear: both;">&nbsp;</div>
 
     </body>

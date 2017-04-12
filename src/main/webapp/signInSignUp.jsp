@@ -20,7 +20,7 @@
     <head>
         <link href="style/signInNice.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ranga" rel="stylesheet">
-        
+
         <%
             if(session.getAttribute("loggedin") != null && 
                     (Boolean)(session.getAttribute("loggedin")) == true) {
@@ -44,19 +44,19 @@
                     <center><input type="password" name="password" id="password" placeholder="Password" /></center>         
 
                     <div id="signInOrForgotPassword">
-                        
+
                         <div id="signIn">
                             <input type="submit" value="Sign In" id="signInButton"/>
                         </div>
 
                         <!--<div id="forgottenPassword">-->
-                            <a class="forgot-link" href="forgotPass.jsp">Forgot Password?</a>
+                        <a class="forgot-link" href="forgotPass.jsp">Forgot Password?</a>
                         <!--</div>-->
 
                     </div>
 
                     <center>
-                        
+
                         <div id="futurepreneurRegister">
                             <a class="register-futurepreneur-link" href="futurepreneurSignUp.jsp" id="futureRegisterButton">Register As<br/>Futurepreneur</a>
                         </div>
@@ -64,32 +64,32 @@
                         <div id="investorRegister">
                             <a class="register-investor-link" href="investorSignUp.jsp" id="investorRegisterButton">Register As<br/>Investor</a>
                         </div>
-                        
+
                     </center>
 
                 </fieldset>
-                
+
                 <%
                     HttpSession sesh = request.getSession(true);
 
                     if(sesh.getAttribute("notLoggedin") != null && (Boolean)(sesh.getAttribute("notLoggedin")) == true) {
                         System.out.println("Inside the false login if");
                 %>
-            
-                    <p>
-                        <div id="failedLoginMessage">
-                            User Name or Password is incorrect
-                        </div> 
-                    </p>
-            
+
+                <p>
+                <div id="failedLoginMessage">
+                    User Name or Password is incorrect
+                </div> 
+                </p>
+
                 <%
                     }
                 %>
-            
+
             </form>
-            
+
         </div>
-        
+
     </body>
 
     <!--<div id="botBanner"><jsp:include page="stdfoot.jsp"/></div>-->

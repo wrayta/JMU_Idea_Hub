@@ -6,12 +6,6 @@
 package entities;
 
 //import java.util.Date;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Represents a Futureprenuer
  *

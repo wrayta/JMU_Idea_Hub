@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package control;
 
 import dbQuery.UserQuery;
 import entities.ErrorChecker;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -44,7 +41,7 @@ public class UsernameControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UsernameControl</title>");            
+            out.println("<title>Servlet UsernameControl</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UsernameControl at " + request.getContextPath() + "</h1>");
@@ -70,8 +67,7 @@ public class UsernameControl extends HttpServlet {
         if (request.getParameter("username") != null) {
             System.out.println("doGet check for username");
             doCheckUsername(request, response);
-        }
-        else if (request.getParameter("editedUsername") != null) {
+        } else if (request.getParameter("editedUsername") != null) {
             System.out.println("doGet check for editedUsername");
             doCheckEditedUsername(request, response);
         }
@@ -93,17 +89,17 @@ public class UsernameControl extends HttpServlet {
     private void doCheckUsername(HttpServletRequest request, HttpServletResponse response) {
         ErrorChecker errorCheck = new ErrorChecker();
         UserQuery userQ = new UserQuery();
-        
+
         response.setContentType("text/text");
         PrintWriter out = null;
         try {
             out = response.getWriter();
-            
-            if(!errorCheck.validateUsername(request.getParameter("username")) ) {
-                out.print("User name is invalid");                
-            } else if(userQ.getUser(request.getParameter("username"))) {
+
+            if (!errorCheck.validateUsername(request.getParameter("username"))) {
+                out.print("User name is invalid");
+            } else if (userQ.getUser(request.getParameter("username"))) {
                 out.print("User already exists");
-            } else if(!userQ.getUser(request.getParameter("username"))) {
+            } else if (!userQ.getUser(request.getParameter("username"))) {
                 out.print("User name is valid");
             }
         } catch (IOException ex) {
@@ -111,25 +107,23 @@ public class UsernameControl extends HttpServlet {
         }
 
     }
-    
+
     private void doCheckEditedUsername(HttpServletRequest request, HttpServletResponse response) {
         ErrorChecker errorCheck = new ErrorChecker();
         UserQuery userQ = new UserQuery();
-        
+
         response.setContentType("text/text");
         PrintWriter out = null;
         try {
             out = response.getWriter();
-            
-            if(!errorCheck.validateUsername(request.getParameter("editedUsername")) ) {
-                out.print("User name is invalid");                
-            } 
-            else if(userQ.getUser((Integer) request.getSession().getAttribute("accountNumber")).equals(request.getParameter("editedUsername"))) {
+
+            if (!errorCheck.validateUsername(request.getParameter("editedUsername"))) {
+                out.print("User name is invalid");
+            } else if (userQ.getUser((Integer) request.getSession().getAttribute("accountNumber")).equals(request.getParameter("editedUsername"))) {
                 out.print("User name is valid");
-            }            
-            else if(userQ.getUser(request.getParameter("editedUsername"))) {
+            } else if (userQ.getUser(request.getParameter("editedUsername"))) {
                 out.print("User already exists");
-            } else if(!userQ.getUser(request.getParameter("editedUsername"))) {
+            } else if (!userQ.getUser(request.getParameter("editedUsername"))) {
                 out.print("User name is valid");
             }
         } catch (IOException ex) {

@@ -29,13 +29,13 @@ public class SupportUpdate {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Lets a person "undo" their support
      */
     public void decrementSupps(int suppNum, int accountNum) {
         DBCommandHandler dbComHand = new DBCommandHandler();
-        String command = "DELETE FROM supports WHERE supportNumber=" + suppNum + " AND accountNumber="+ accountNum;
+        String command = "DELETE FROM supports WHERE supportNumber=" + suppNum + " AND accountNumber=" + accountNum;
 
         try {
             int resultCount = dbComHand.doCommand(command);

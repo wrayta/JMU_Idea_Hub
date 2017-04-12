@@ -308,8 +308,8 @@ a.moreIdeaLink:hover {
 
 #supportImageButtonLiked {
     display: inline-block;
-/*    opacity: 0.4;
-    filter: alpha(opacity=40);  msie */
+    /*    opacity: 0.4;
+        filter: alpha(opacity=40);  msie */
 }
 
 #supportImageButtonLiked :hover {

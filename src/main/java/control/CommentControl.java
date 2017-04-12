@@ -2,7 +2,6 @@ package control;
 
 import dbCommand.CommentUpdate;
 import entities.Comment;
-import entities.ErrorChecker;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -97,7 +96,6 @@ public class CommentControl extends HttpServlet {
 //            added = false;
 //            msg += "<p>Comment must be less than 500 characters</p>";
 //        }
-
         if (added) {
             com = new Comment(Integer.parseInt(request.getParameter("number")),
                     (Integer) sesh.getAttribute("accountNumber"),

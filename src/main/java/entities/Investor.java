@@ -1,10 +1,5 @@
 package entities;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Represents an Investor
  *
@@ -108,17 +103,17 @@ public class Investor extends User {
     public void setListName(String name) {
         this.listName = name;
     }
-    
+
     /*
     
-    */
+     */
     public String getListEmail() {
         return listEmail;
     }
-    
+
     /*
     
-    */
+     */
     public void setListEmail(String email) {
         this.listEmail = email;
     }

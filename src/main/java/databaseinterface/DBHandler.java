@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.naming.*;
 
 /*
  * An abstract parent class for database handlers. This class loads
@@ -58,10 +57,10 @@ public abstract class DBHandler {
         con = DriverManager.getConnection(url, userId, password);
 
         if (con != null) {
-	    System.out.println("You made it, take control your database now!");
-	} else {
-	    System.out.println("Failed to make connection!");
-	}
+            System.out.println("You made it, take control your database now!");
+        } else {
+            System.out.println("Failed to make connection!");
+        }
         stmt = con.createStatement();
         isOpen = true;
     }

@@ -8,10 +8,7 @@ package dbQuery;
 import databaseinterface.DBQueryHandler;
 import entities.Futurepreneur;
 import entities.Investor;
-import entities.MajorMinor;
 import entities.User;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -54,7 +51,7 @@ public class UserQuery {
                 String name = getUserFullName(accountNumber);
 
                 String email = getUserEmail(accountNumber);
-                
+
                 Investor inv = new Investor(name, occupation, interests, website, accountNumber, email);
 
                 result.add(inv);
@@ -145,13 +142,13 @@ public class UserQuery {
 
     /*
     
-    */
+     */
     public String getUserEmail(int number) {
         String queryForEmail = "select email from users where accountNumber = ";
         queryForEmail += number;
         DBQueryHandler dbQue = new DBQueryHandler();
         String email = null;
-        
+
         try {
             ResultSet rs = dbQue.doQuery(queryForEmail);
 
@@ -161,10 +158,10 @@ public class UserQuery {
         } catch (SQLException ex) {
             Logger.getLogger(UserQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return email;
     }
-    
+
     /**
      * Gets the full name of the user based on their accountNumber
      *
@@ -194,7 +191,7 @@ public class UserQuery {
 
         return name;
     }
-    
+
     /**
      * Gets the first name of the user based on their accountNumber
      *
@@ -224,7 +221,6 @@ public class UserQuery {
 
         return firstName;
     }
-
 
     /**
      * Gets the userName based on accountNumber

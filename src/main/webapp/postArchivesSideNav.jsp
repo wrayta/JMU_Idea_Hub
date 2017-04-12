@@ -14,45 +14,45 @@
     </head>
     <body>
         <div id="mySidenav" class="sideNav">
-        <%!
-            String getMonthForInt(int num) {
-                String month = "wrong";
-                DateFormatSymbols dfs = new DateFormatSymbols();
-                String[] months = dfs.getMonths();
-                if (num >= 0 && num <= 11 ) {
-                    month = months[num];
-                }
-                return month;
-            }
-        %>
-        <%                
-                Calendar now = Calendar.getInstance();
-                
-                int month = (now.get(Calendar.MONTH));
-                
-                for (int i = month; i >= 0; i--) {
-                    if(i == month) {
-                        String latestMonthStr = getMonthForInt(i);
-                        out.print("<a href=\"#\""
-                                + "onclick=\"requestIdeasForMonth(" + -1 + ")\"" 
-                                + "id=\"latestMonth\"" 
-                                + "class=\"month\">"
-                                + latestMonthStr
-                                + "</a>"); 
+            <%!
+                String getMonthForInt(int num) {
+                    String month = "wrong";
+                    DateFormatSymbols dfs = new DateFormatSymbols();
+                    String[] months = dfs.getMonths();
+                    if (num >= 0 && num <= 11 ) {
+                        month = months[num];
                     }
-                    else {
-                        String monthStr = getMonthForInt(i);
-                        out.print("<a href=\"#\""
-                                + "onclick=\"requestIdeasForMonth(" + i + ")\"" 
-                                + "id=\"month" + i + "\"" 
-                                + "class=\"month\">"
-                                + monthStr
-                                + "</a>");
-                    }
+                    return month;
                 }
-        %>
+            %>
+            <%                
+                    Calendar now = Calendar.getInstance();
+                
+                    int month = (now.get(Calendar.MONTH));
+                
+                    for (int i = month; i >= 0; i--) {
+                        if(i == month) {
+                            String latestMonthStr = getMonthForInt(i);
+                            out.print("<a href=\"#\""
+                                    + "onclick=\"requestIdeasForMonth(" + -1 + ")\"" 
+                                    + "id=\"latestMonth\"" 
+                                    + "class=\"month\">"
+                                    + latestMonthStr
+                                    + "</a>"); 
+                        }
+                        else {
+                            String monthStr = getMonthForInt(i);
+                            out.print("<a href=\"#\""
+                                    + "onclick=\"requestIdeasForMonth(" + i + ")\"" 
+                                    + "id=\"month" + i + "\"" 
+                                    + "class=\"month\">"
+                                    + monthStr
+                                    + "</a>");
+                        }
+                    }
+            %>
         </div>
-        
+
         <script>
             var months = document.getElementsByClassName("month");
             var topNum = 25;

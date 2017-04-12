@@ -18,20 +18,20 @@
 
     <body>
         <jsp:include page="nonstdhead.jsp"/>
-        
+
         <div id="jmuSunset">
             <img src="img/james_madison_sunset.jpg"></img>
         </div>
-        
+
         <div id="aboutHeading">
             All great ideas start with a little help...
         </div>
-        
+
         <div id="wrapperAboutText">
             <div id="aboutText">
-                    Welcome to JMU Idea Hub - a place where current students can connect
-                    with alumni in an entrepreneurial environment that fosters collaboration
-                    through the power of social networking.
+                Welcome to JMU Idea Hub - a place where current students can connect
+                with alumni in an entrepreneurial environment that fosters collaboration
+                through the power of social networking.
 
                 <p>
                     <div id="howItWorks">
@@ -47,15 +47,15 @@
                     privately message one another to edit and revise the proposed ideas
                     or discuss logistics.
                 </p>
-                   
+
                 <br/>
                 <br/>
-                
+
                 <p>
                     <div id="mission">
                         Our mission
                     </div>
-                    
+
                     We hope that this site will act as the first stepping stone 
                     for many young, burgeoning entrepreneurs and provide a bridge
                     between the "academic world" and the "real world." We also
@@ -73,7 +73,7 @@
                     more fearless, novel ideas and we want to help build a future
                     where the students of today can truly lead the world of tomorrow!
                 </p>
-                    
+
                 <div id="slogan">
                     <p>
                         - "Knowledge is Liberty"
@@ -81,7 +81,7 @@
                 </div>
 
             </div>
-            
+
         </div>
 
     </body>

@@ -2,10 +2,6 @@ package dbQuery;
 
 import databaseinterface.DBQueryHandler;
 import entities.Idea;
-import entities.MajorMinor;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -76,12 +72,12 @@ public class IdeaQuery {
     }
 
     /**
-     * 
+     *
      */
     public ArrayList<Object> getIdeasForMonth(String month) {
-        
+
         System.out.println("The month: " + month);
-        
+
         String query = "SELECT * FROM ideas WHERE date LIKE '%" + month + "%' ORDER BY ideaNumber DESC";
         ArrayList<Object> result = new ArrayList<Object>(); //Why is this OBJECT???????
 
@@ -116,6 +112,7 @@ public class IdeaQuery {
 
         return result;
     }
+
     /**
      * Gets all the ideas
      *
