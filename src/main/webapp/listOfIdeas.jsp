@@ -58,7 +58,7 @@
         <%
             ArrayList<Object> ideaData = (ArrayList<Object>) (request.getSession().getAttribute("ideaData"));
 //            System.out.println("ideaData size: " + ideaData.size());
-            if (ideaData != null) {
+            if (ideaData != null && ideaData.size() > 0) {
                 Iterator it = ideaData.iterator();
                 int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
                 int counter = 1; 

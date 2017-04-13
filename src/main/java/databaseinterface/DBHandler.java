@@ -27,6 +27,7 @@ public abstract class DBHandler {
      * Get parameters required to open DBMS connection.
      */
     public DBHandler() {
+        // FOR LOCAL TESTING 
 //        try {
 //
 //            driverName = "com.mysql.jdbc.Driver";
@@ -37,6 +38,10 @@ public abstract class DBHandler {
 //        } catch (ClassNotFoundException e) {
 //            e.printStackTrace();
 //        }
+      
+/******************************************************************************/
+        
+        // FOR HEROKU DEPLOYMENT
         URI dbUri = null;
         try {
             dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
