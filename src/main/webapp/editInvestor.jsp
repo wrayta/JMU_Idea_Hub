@@ -28,7 +28,7 @@ and open the template in the editor.
         <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="style/formValidation.css"/>
         <%
-            Investor user = (Investor) userQ.getInv((Integer) (request.getSession().getAttribute("accountNumber")));
+            Investor user = (Investor) (request.getSession().getAttribute("user"));
         %> 
 
         <script>

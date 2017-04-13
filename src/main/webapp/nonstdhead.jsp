@@ -3,6 +3,8 @@
     Author     : Thomas Wray Joe Otis
 --%>
 <%@page import="dbQuery.UserQuery"%>
+<%@page import="entities.User"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -89,7 +91,7 @@
                                 + "</div>"
                                 + "</div>"
                                 + "</div>"
-                                + "<div id=\"welcomeUserString\">Welcome, " + request.getSession().getAttribute("firstName")
+                                + "<div id=\"welcomeUserString\">Welcome, " + ((User)(request.getSession().getAttribute("user"))).getFirstName()
                                 + "</div>");
                     }
                 %>

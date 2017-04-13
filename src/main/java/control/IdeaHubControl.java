@@ -190,7 +190,7 @@ public class IdeaHubControl extends HttpServlet {
 //        HttpSession sesh = request.getSession(true);
 //        UserQuery query = new UserQuery();
         UserUpdate update = new UserUpdate();
-
+        UserQuery user = new UserQuery();
 //        String msg = "";
 //
 //        ErrorChecker err = new ErrorChecker();
@@ -250,6 +250,10 @@ public class IdeaHubControl extends HttpServlet {
 
             update.updateInv(inv);
 
+//            request.getSession().setAttribute("firstName", request.getParameter("investorFirstName"));
+
+            request.getSession().setAttribute("user", (Investor) user.getInv((Integer) (request.getSession().getAttribute("accountNumber"))));
+
             try {
                 response.sendRedirect("idea.jsp");
             } catch (IOException ex) {
@@ -279,6 +283,7 @@ public class IdeaHubControl extends HttpServlet {
         boolean added = true;
 //        UserQuery query = new UserQuery();
         UserUpdate update = new UserUpdate();
+        UserQuery user = new UserQuery();
 //        HttpSession sesh = request.getSession(true);
 //
 //        String msg = "";
@@ -341,6 +346,9 @@ public class IdeaHubControl extends HttpServlet {
                     (Integer) request.getSession().getAttribute("accountNumber"));
 
             update.updateFut(fut);
+
+//            request.getSession().setAttribute("firstName", request.getParameter("futurepreneurFirstName"));
+            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
 
             try {
                 response.sendRedirect("idea.jsp");
@@ -658,7 +666,13 @@ public class IdeaHubControl extends HttpServlet {
         if (query.checkPass(request.getParameter("user").toLowerCase(), IdeaHubControl.hashPassword(request.getParameter("password")))) {
             sesh.setAttribute("loggedin", true);
             sesh.setAttribute("accountNumber", new Integer(query.getAccountNum(request.getParameter("user"))));
-            sesh.setAttribute("firstName", query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber")));
+//            sesh.setAttribute("firstName", query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber")));
+            if (!query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
+                sesh.setAttribute("user", (Futurepreneur) query.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+            }
+            else {
+                sesh.setAttribute("user", (Investor) query.getInv((Integer) (request.getSession().getAttribute("accountNumber"))));
+            }
 
             String monthStr = getMonthForInt(month);
             ArrayList<Object> ideaData = ideaQuery.getIdeasForMonth(monthStr);
@@ -750,6 +764,8 @@ public class IdeaHubControl extends HttpServlet {
 
         sesh.setAttribute("loggedin", true);
         sesh.setAttribute("accountNumber", new Integer(query.getNextAccountNum()));
+        sesh.setAttribute("user", (Investor) query.getInv((Integer) (sesh.getAttribute("accountNumber"))));
+
         try {
             response.sendRedirect("./idea.jsp");
         } catch (IOException ex) {
@@ -843,6 +859,8 @@ public class IdeaHubControl extends HttpServlet {
 
         sesh.setAttribute("loggedin", true);
         sesh.setAttribute("accountNumber", query.getNextAccountNum());
+        sesh.setAttribute("user", (Futurepreneur) query.getFut((Integer) (sesh.getAttribute("accountNumber"))));
+
 
         try {
             response.sendRedirect("idea.jsp");
