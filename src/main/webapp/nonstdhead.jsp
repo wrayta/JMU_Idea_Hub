@@ -78,7 +78,7 @@
                             editInfo = ("<div id=\"editFuture\"><a href=\"editFuturepreneur.jsp\">Edit Profile</a></div>");
                         }
 
-                        String firstName = query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber"));
+//                        String firstName = query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber"));
 
                         out.print("<div class=\"dropdown\">"
                                 + "<img id=\"profileDropDown\" src=\"img/signIn.bmp\">"
@@ -89,7 +89,7 @@
                                 + "</div>"
                                 + "</div>"
                                 + "</div>"
-                                + "<div id=\"welcomeUserString\">Welcome, " + firstName
+                                + "<div id=\"welcomeUserString\">Welcome, " + request.getSession().getAttribute("firstName")
                                 + "</div>");
                     }
                 %>

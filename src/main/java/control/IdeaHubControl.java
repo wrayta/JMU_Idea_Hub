@@ -658,6 +658,7 @@ public class IdeaHubControl extends HttpServlet {
         if (query.checkPass(request.getParameter("user").toLowerCase(), IdeaHubControl.hashPassword(request.getParameter("password")))) {
             sesh.setAttribute("loggedin", true);
             sesh.setAttribute("accountNumber", new Integer(query.getAccountNum(request.getParameter("user"))));
+            sesh.setAttribute("firstName", query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber")));
 
             String monthStr = getMonthForInt(month);
             ArrayList<Object> ideaData = ideaQuery.getIdeasForMonth(monthStr);
