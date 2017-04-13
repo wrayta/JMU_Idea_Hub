@@ -58,47 +58,49 @@
         <%
             ArrayList<Object> ideaData = (ArrayList<Object>) (request.getSession().getAttribute("ideaData"));
 //            System.out.println("ideaData size: " + ideaData.size());
-            Iterator it = ideaData.iterator();
-            int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
-            int counter = 1; 
-            UserQuery usQuery = new UserQuery();
+            if (ideaData != null) {
+                Iterator it = ideaData.iterator();
+                int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
+                int counter = 1; 
+                UserQuery usQuery = new UserQuery();
 
-            out.println("<div id=\"ideasList\">");
-            
-            while (it.hasNext()) {
-                Idea idea = (Idea) it.next();
-                String name = usQuery.getUserFullName(idea.getAccountNumber());
-                out.println(
-                    "<button class=\"accordion\""
-                    + ">"
-                    + "<div id=\"listIdeaTitle\">"
-                    + idea.getIdeaTitle()
-                    + "</div>"
-                    + "<div id=\"listIdeaAuthor\">"
-                    + name
-                    + "</div>"
-                    + "<div id=\"listIdeaDate\">"
-                    + idea.getDate()
-                    + "</div>"
-                    + "</button>"
-                    + "<div class=\"panel\">"
-                    + "<p>"
-                    + "<div id=\"listIdeaContent\">"
-                    + idea.getIdea()
-                    + "</div>"
-                    + "<div id=\"moreIdea\">"
-                    + "<a class=\"moreIdeaLink\" href=\"idea?ideaNum="
-                    + idea.getIdeaNumber() + "\">"
-                    + "See More..."
-                    + "</a>"
-                    + "</div>"
-                    + "</p>"
-                    + "</div>");
+                out.println("<div id=\"ideasList\">");
 
-                counter++;
+                while (it.hasNext()) {
+                    Idea idea = (Idea) it.next();
+                    String name = usQuery.getUserFullName(idea.getAccountNumber());
+                    out.println(
+                        "<button class=\"accordion\""
+                        + ">"
+                        + "<div id=\"listIdeaTitle\">"
+                        + idea.getIdeaTitle()
+                        + "</div>"
+                        + "<div id=\"listIdeaAuthor\">"
+                        + name
+                        + "</div>"
+                        + "<div id=\"listIdeaDate\">"
+                        + idea.getDate()
+                        + "</div>"
+                        + "</button>"
+                        + "<div class=\"panel\">"
+                        + "<p>"
+                        + "<div id=\"listIdeaContent\">"
+                        + idea.getIdea()
+                        + "</div>"
+                        + "<div id=\"moreIdea\">"
+                        + "<a class=\"moreIdeaLink\" href=\"idea?ideaNum="
+                        + idea.getIdeaNumber() + "\">"
+                        + "See More..."
+                        + "</a>"
+                        + "</div>"
+                        + "</p>"
+                        + "</div>");
+
+                    counter++;
+                }
+
+                out.println("</div>");
             }
-
-            out.println("</div>");
         %>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
