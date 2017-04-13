@@ -1,0 +1,436 @@
+
+
+/*body, div, h1, form, fieldset, input, textarea {
+    margin: 0; padding: 0; border: 0; outline: none;
+}*/
+
+/*html {
+    height: 100%;
+}*/
+
+fieldset {
+    outline: none;
+    border: 0;
+}
+
+/*body {
+    background: #FFFFFF url(../img/shaking-hands.jpg);  firefox 
+    background: no-repeat;
+    font-family: sans-serif; 
+}*/
+
+a {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+}
+
+#signIn {
+    display: inline-block;
+}
+
+/*#futurepreneurRegister {
+    display: inline-block;
+}
+
+#investorRegister {
+   display: inline-block; 
+}*/
+
+#contact {
+    width: 430px; 
+    margin: 120px auto; 
+    padding: 60px 30px;
+    border: 1px solid #000000;
+}
+
+label {
+    font-family: 'PT Sans Narrow', sans-serif;
+    display: inline-block;
+    float: none; 
+    clear: left; 
+    margin: 11px 20px 0 0; 
+    width: 95px;
+    text-align: left; 
+    font-size: 16px; 
+    color: #445668; 
+    /*text-transform: uppercase;*/ 
+    text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+input {
+    display: inline-block;
+    width: 260px; 
+    height: 35px; 
+    padding: 5px 20px 0px 20px; 
+    margin: 10px 0 20px 0; 
+    background: #440088;
+    border-radius: 5px; 
+    /*    -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px;
+        -moz-box-shadow: 0px 1px 0px #f2f2f2;
+        -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
+    font-family: sans-serif; 
+    font-size: 16px; 
+    color: #f2f2f2; 
+    /*    text-transform: uppercase; */
+    text-shadow: 0px -1px 0px #334f71; 
+}
+/*input::-webkit-input-placeholder  {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b;  
+}
+input:-moz-placeholder {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b; 
+}*/
+
+textarea {
+    width: 260px; 
+    height: 170px; 
+    padding: 12px 20px 0px 20px; 
+    margin: 0 0 10px 0; 
+    background: #440088;
+    border-radius: 5px; 
+    /*    -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px;
+        -moz-box-shadow: 0px 1px 0px #f2f2f2;
+        -webkit-box-shadow: 0px 1px 0px #f2f2f2;*/
+    font-family: sans-serif; 
+    font-size: 16px; 
+    color: #f2f2f2; 
+    /*text-transform: uppercase;*/ 
+    text-shadow: 0px -1px 0px #334f71; 
+    resize: none;
+}
+
+/*textarea::-webkit-input-placeholder  {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b;  
+}
+
+textarea:-moz-placeholder {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b; 
+}*/
+
+input:focus {
+    background: #9370DB;
+}
+
+#signInOrForgotPassword {
+    margin: 10px 0 0 0;
+    text-align: center;
+    /*display: inline-block;*/
+}
+
+#signInButton {
+    width: 100px; 
+    height: 52px;
+}
+
+#failedLoginMessage {
+    display: inline-block;
+    font-family: sans-serif;
+    color: #9370DB;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 10px 0 0 0;
+}
+
+a.forgot-link {
+    font-size: 20px;
+    font-family: 'Ranga', cursive;
+    text-decoration: underline;
+}
+
+a.register-futurepreneur-link {
+    display: inline-block;
+    /*width: 260px;*/ 
+    /*height: 35px;*/ 
+    padding: 10px 15px 10px 15px; 
+    margin: 30px 5px 0 0;
+    background: #440088;
+    border-radius: 5px; 
+
+    font-family: sans-serif; 
+    font-size: 16px; 
+    color: #f2f2f2; 
+    text-shadow: 0px -1px 0px #334f71;
+
+    border: 1px solid #440088;
+    cursor: pointer;
+}
+
+a.register-investor-link {
+    display: inline-block;
+
+    padding: 10px 15px 10px 15px; 
+    margin: 30px 5px 0 0;
+    background: #440088;
+    border-radius: 5px; 
+
+    font-family: sans-serif; 
+    font-size: 16px; 
+    color: #f2f2f2; 
+    text-shadow: 0px -1px 0px #334f71;
+
+    border: 1px solid #440088;
+    cursor: pointer;
+}
+
+/*#fogottenPassword {
+   display: inline-block;
+}
+
+#fogottenPassword:a {
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-decoration: underline;
+}*/
+
+input[type=submit] {
+    /*    display: inline-block;*/
+    /*    width: 100px; 
+        height: 52px; */
+    /*float: left;*/ 
+    padding: 10px 15px; 
+    margin: 0 15px 0 0;
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
+    border: 1px solid #440088;
+    cursor: pointer;
+    /*text-transform: uppercase;*/
+}
+
+input[type=reset] {
+    /*    display: inline-block;*/
+    /*    width: 100px; 
+        height: 52px; */
+    /*float: left;*/ 
+    padding: 10px 15px; 
+    margin: 0 15px 0 0;
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
+    border: 1px solid #440088;
+    cursor: pointer;
+    /*text-transform: uppercase;*/
+}
+
+
+
+
+
+
+/*******************************************************************************/
+/*                       When Registering an Investor...                       */
+/*                                                                             */
+/*******************************************************************************/
+
+#investorFormWrapper {
+    margin: 100px 0 0 0;
+}
+
+#investorFirstName {
+    display: inline-block;
+}
+
+#investorLastName {
+    display: inline-block;
+}
+
+#investorEmail {
+    display: inline-block;
+}
+
+#investorOccupation {
+    display: inline-block;
+}
+
+#investorInterests {
+    display: inline-block;
+}
+
+#investorWebsite {
+    display: inline-block;
+}
+
+#investorUserName {
+    display: inline-block;
+}
+
+#investorPassword0 {
+    display: inline-block;
+}
+
+#investorPassword1 {
+    display: inline-block;
+}
+
+#investorRegisterSubmitButton {
+    width: 150px; 
+    height: 52px;
+}
+
+#investorRegisterCancelButton {
+    width: 150px; 
+    height: 52px;
+    margin: 0 15px 0 0;
+}
+
+#investorRegisterResetButton {
+    width: 150px; 
+    height: 52px;
+}
+
+
+
+
+
+/*******************************************************************************/
+/*                       When Registering a Futurepreneur...                   */
+/*                                                                             */
+/*******************************************************************************/
+#futureFirstName {
+    display: inline-block;
+}
+
+#futureLastName {
+    display: inline-block;
+}
+
+#futureEmail {
+    display: inline-block;
+}
+
+#futureGPA {
+    display: inline-block;
+}
+
+#futureUserName {
+    display: inline-block;
+}
+
+#futurePassword0 {
+    display: inline-block;
+}
+
+#futurePassword1 {
+    display: inline-block;
+}
+
+#futureRegisterSubmitButton {
+    width: 150px; 
+    height: 52px;
+}
+
+#futureRegisterCancelButton {
+    width: 150px; 
+    height: 52px;
+    margin: 0 15px 0 0;
+}
+
+#futureRegisterResetButton {
+    width: 150px; 
+    height: 52px;
+}
+
+#investorRegisterButton {
+    /*white-space: normal;*/
+    width: 150px; 
+    height: 40px;
+}
+
+#investorRegisterButton:hover {
+    background: #9370DB;
+}
+
+#futureRegisterButton {
+    /*white-space: normal;*/
+    width: 150px; 
+    height: 40px;
+}
+
+#futureRegisterButton:hover {
+    background: #9370DB;
+}
+
+input[type=button]{
+    /*position: absolute;*/
+    display: inline-block;
+    /*    width: 185px; 
+        height: 62px; */
+    /*float: right;*/ 
+    padding: 10px 15px; 
+    margin: 30px 5px 0 0;
+    /*    -moz-box-shadow: 0px 0px 5px #999;
+        -webkit-box-shadow: 0px 0px 5px #999;*/
+    border: 1px solid #440088;
+    cursor: pointer;
+    /*text-transform: uppercase;*/
+}
+
+input[type=button]:hover {
+    background: #9370DB;
+}
+
+input[type=submit]:hover {
+    background: #9370DB;
+}
+
+input[type=reset]:hover {
+    background: #9370DB;
+}
+
+#futurepreneurFormWrapper {
+    margin: 100px 0 0 0;
+}
+
+#futurepreneurRegister {
+    display: inline-block;
+}
+
+#investorRegister {
+    display: inline-block;
+}
+
+#majorSelect {
+    width: 302px;
+    /*padding: 5px 20px 0px 20px;*/ 
+}
+
+#gradeLevelSelect {
+    width: 302px;
+}
+
+#minorSelect {
+    width: 302px;
+}
+
+/*#botBanner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding:10px;
+    height:60px;
+    background-size:100%;
+    background-color: #000000;
+    //border: 4px solid #000000;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+#botBanner a {
+    text-align: center;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+#botBanner a:hover{
+
+    color: #CCCCCC;
+}*/

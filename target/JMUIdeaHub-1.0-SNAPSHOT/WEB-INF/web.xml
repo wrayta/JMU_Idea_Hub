@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <welcome-file-list>
+        <welcome-file>homepage.jsp</welcome-file>
+        <!--<welcome-file>signInSignUp.jsp</welcome-file>-->
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>IdeaHubControl</servlet-name>
+        <servlet-class>control.IdeaHubControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommentControl</servlet-name>
+        <servlet-class>control.CommentControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupportControl</servlet-name>
+        <servlet-class>control.SupportControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsernameControl</servlet-name>
+        <servlet-class>control.UsernameControl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IdeaHubControl</servlet-name>
+        <url-pattern>/idea</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentControl</servlet-name>
+        <url-pattern>/comment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupportControl</servlet-name>
+        <url-pattern>/support</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsernameControl</servlet-name>
+        <url-pattern>/username</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
