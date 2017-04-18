@@ -162,59 +162,21 @@
                         
                     </div>
 
-                    <%
-                        ArrayList<Object> majorData = majorQ.getMajorTable();
-                        Iterator it = majorData.iterator();
-                        int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
-                    %>
-
                     <div id="futureMajor">
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="majors">
-                            <%
-                                int counter = 1;
-                                while (it.hasNext()) {
-                                    MajorMinor maj = (MajorMinor) it.next();
-//                                    if (counter == user.getMajor()) {
-//                                        out.print("<option selected=\"selected\"");
-//                                    } else {
-                                        out.print("<option");
-//                                    }
-
-                                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-                                    counter++;
-                                }
-                            %>
+                            <option value="1">Computer Science</option>
+                            <option value="2">Biology</option>
                         </select>
                     </div>
-
-                    <%
-                        ArrayList<Object> minorData = minorQ.getMinorTable();
-                        Iterator it2 = minorData.iterator();
-                        int rows2 = ((Integer) it2.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
-                    %>
 
                     <div id="futureMinor">
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="minors">
-                            <%
-                                int counter2 = 1;
-//                                out.print("asdfsadfsadf " + user.getMinor());
-                                while (it2.hasNext()) {
-                                    MajorMinor min = (MajorMinor) it2.next();
-
-//                                    if (counter2 == user.getMinor()) {
-//                                        out.print("<option selected=\"selected\"");
-//                                    } else {
-                                        out.print("<option");
-//                                    }
-
-                                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-                                    counter2++;
-                                }
-                            %>
+                            <option value="1">music</option>
+                            <option value="2">English</option>
                         </select>
                     </div>
 
