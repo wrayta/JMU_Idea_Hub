@@ -408,7 +408,7 @@
                                                 data: $('#futurepreneur-edit-form').serialize(),
                                                 dataType: "json",
 //                                                contentType: "application/json;charset=utf-8",
-                                                async: true    
+                                                async: false    
 //                                                success: function() {
 //                                                    console.log("A futurepreneur was updated");
 //                                                    window.location = "idea.jsp";
@@ -417,6 +417,14 @@
 //                                                    console.log("A futurepreneur was updated with errors");
 //                                                    window.location = "idea.jsp";
 //                                                }
+                                              }).always(function() {
+                                                  $.ajax({
+                                                    type: "get",
+                                                    url: "updateUserAttribute",
+                                                    async: false
+                                                }).always(function() {
+                                                    console.log("the always function fired");
+                                                });
                                               }).always(function() {
                                                   window.location = "idea.jsp";
                                               });                        

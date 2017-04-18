@@ -92,8 +92,8 @@
                                 + "</div>"
                                 + "</div>"
                                 + "</div>"
-                                + "<div id=\"welcomeUserString\">Welcome!" 
-//                                + ((User)(session.getAttribute("user"))).getFirstName() **TODO: Figure this out at some point (it works locally but not on a remote server)
+                                + "<div id=\"welcomeUserString\">Welcome, " 
+                                + ((User)(session.getAttribute("user"))).getFirstName()
                                 + "</div>");
                     }
                 %>
