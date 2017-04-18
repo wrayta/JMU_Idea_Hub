@@ -28,30 +28,30 @@ public abstract class DBHandler {
      */
     public DBHandler() {
         // FOR LOCAL TESTING 
-//        try {
-//
-//            driverName = "com.mysql.jdbc.Driver";
-//            Class.forName(driverName);
-//            url = "jdbc:mysql://localhost:2010/jmu_idea_hub";
-//            userId = "root";
-//            password = "admin";
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+
+            driverName = "com.mysql.jdbc.Driver";
+            Class.forName(driverName);
+            url = "jdbc:mysql://localhost:2010/jmu_idea_hub";
+            userId = "root";
+            password = "admin";
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
       
 /******************************************************************************/
         
         // FOR HEROKU DEPLOYMENT
-        URI dbUri = null;
-        try {
-            dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        userId = dbUri.getUserInfo().split(":")[0];
-        password = dbUri.getUserInfo().split(":")[1];
-        url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();   
+//        URI dbUri = null;
+//        try {
+//            dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+//        } catch (URISyntaxException ex) {
+//            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        userId = dbUri.getUserInfo().split(":")[0];
+//        password = dbUri.getUserInfo().split(":")[1];
+//        url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();   
         
     }
 
@@ -75,7 +75,7 @@ public abstract class DBHandler {
      * Close the DB connection
      */
     public void close() throws SQLException {
-        stmt.close();
+//        stmt.close();
         con.close();
         isOpen = false;
     }

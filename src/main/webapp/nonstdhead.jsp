@@ -92,8 +92,8 @@
                                 + "</div>"
                                 + "</div>"
                                 + "</div>"
-                                + "<div id=\"welcomeUserString\">Welcome, " 
-                                + ((User)(session.getAttribute("user"))).getFirstName()
+                                + "<div id=\"welcomeUserString\">" 
+                                + "<span></span>"
                                 + "</div>");
                     }
                 %>
@@ -101,7 +101,14 @@
             </div>  
 
         </div>
-
+                <%--<%= ((User)(session.getAttribute("user"))).getFirstName()%>--%>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $('#welcomeUserString span').text('Welcome!');
+            });  
+            </script>
+                    
     </body>
 
 </html>

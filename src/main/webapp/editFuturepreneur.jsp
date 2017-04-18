@@ -33,9 +33,6 @@
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ranga" rel="stylesheet">
         <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="style/formValidation.css"/>
-        <%
-            Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
-        %> 
 
         <script>
             function checkExist() {
@@ -68,59 +65,10 @@
                 }
             }
             
-            function updateUserInfo() {
-                              
-                console.log("Inside updateUserInfo at the beginning!");
-                
-                var xmlhttp;
-                
-                if (window.XMLHttpRequest)
-                {// code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                }
-                else
-                {// code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
-                    {
-//                        console.log("AJAX Request completed!");
-//                        window.location = "signInSignUp.jsp";
-                    }
-                };
-                
-//                var firstName = document.getElementById("futurepreneurFirstName").value;
-//                var lastName = document.getElementById("futurepreneurLastName").value;
-//                var email = document.getElementById("futurepreneurEmail").value;
-//                var password = document.getElementById("pwd1").value;
-//                var userName = document.getElementById("futurepreneurUsernameInputEditId").value;
-//                var gpa = document.getElementById("gpa").value;
-//                var gradeLevel = document.getElementById("gradeLevelSelect").value;
-//                var major = document.getElementById("majorSelect").value;
-//                var minor = document.getElementById("minorSelect").value;
-//                var graduationDate = document.getElementById("year").value;
-                
-                var fd = new FormData(document.getElementById("futurepreneur-edit-form"));                
-                
-//                fd.append("editedFut", "editedFutFirstName=" + firstName +
-//                            "&editedFutLastName=" + lastName +
-//                            "&editedFutEmail=" + email +
-//                            "&editedFutPassword=" + password +
-//                            "&editedFutUserName=" + userName +
-//                            "&editedFutGpa=" + gpa + 
-//                            "&editedFutGradeLevel=" + encodeURIComponent(unescape(gradeLevel)) +
-//                            "&editedFutMajor=" + major +
-//                            "&editedFutMinor=" + minor +
-//                            "&editedFutGraduationDate=" + graduationDate);
-
-                    xmlhttp.open("POST", "editFuturepreneur");
-                    xmlhttp.send(fd);
-            }
-            
         </script>
 
     </head>
+    
     <body>
         <%
             if (!(Boolean) request.getSession().getAttribute("loggedin")) {
@@ -141,7 +89,6 @@
                     <div id="futureFirstName">
                         <label>First Name:</label>
                         <input type="text" 
-                               value="<%=user.getFirstName()%>"
                                data-validation="alphanumeric" 
                                data-validation="required" 
                                data-validation-allowing="-_" 
@@ -156,7 +103,6 @@
 
                         <label>Last Name:</label>
                         <input type="text" 
-                               value="<%=user.getLastName()%>"
                                data-validation="alphanumeric" 
                                data-validation="required" 
                                data-validation-allowing="-_"
@@ -173,7 +119,6 @@
 
                         <label>Email:</label>
                         <input type="text" 
-                               value="<%=user.getEmail()%>"
                                data-validation="email"
                                name="futurepreneurEmail"
                                id="futurepreneurEmail"
@@ -186,7 +131,6 @@
                     <div id="futureGPA">
                         <label>GPA:</label>
                         <input type="text" 
-                               value="<%=user.getGpa()%>"
                                data-validation="number" 
                                data-validation-allowing="range[0.00;4.0],float"
                                name="gpa"
@@ -203,30 +147,19 @@
                                 onkeyup="enableBeforeUnload();" name="gradesel">
                             <%
                                 String[] gradeLevels = {"Freshman", "Sophomore", "Junior", "Senior", "Senior+"};
-                            
-    //                            int counter = 0;
-    //                            while (it.hasNext()) {
                                 for(int i = 1; i <= gradeLevels.length; i++) {
-    //                                MajorMinor maj = (MajorMinor) it.next();
-                                    if (gradeLevels[i - 1].equals(user.getAcademic())) {
-                                        out.print("<option selected=\"selected\"");
-                                    } else {
+//                                    if (gradeLevels[i - 1].equals(user.getAcademic())) {
+//                                        out.print("<option selected=\"selected\"");
+//                                    } else {
                                         out.print("<option");
-                                    }
+//                                    }
 
                                     out.print(">" + gradeLevels[i - 1] + "</option>");
-    //                                counter++;
-    //                            }
+
                                 }
                             %>
                         </select>   
-                        <!--                        <select id="gradeLevelSelect" name="gradesel">
-                                                    <option value="1">Freshman</option>
-                                                    <option value="2">Sophomore</option>
-                                                    <option value="3">Junior</option>
-                                                    <option value="4">Senior</option>
-                                                    <option value="5">Senior+</option>
-                                                </select>-->
+                        
                     </div>
 
                     <%
@@ -243,11 +176,11 @@
                                 int counter = 1;
                                 while (it.hasNext()) {
                                     MajorMinor maj = (MajorMinor) it.next();
-                                    if (counter == user.getMajor()) {
-                                        out.print("<option selected=\"selected\"");
-                                    } else {
+//                                    if (counter == user.getMajor()) {
+//                                        out.print("<option selected=\"selected\"");
+//                                    } else {
                                         out.print("<option");
-                                    }
+//                                    }
 
                                     out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
                                     counter++;
@@ -272,11 +205,11 @@
                                 while (it2.hasNext()) {
                                     MajorMinor min = (MajorMinor) it2.next();
 
-                                    if (counter2 == user.getMinor()) {
-                                        out.print("<option selected=\"selected\"");
-                                    } else {
+//                                    if (counter2 == user.getMinor()) {
+//                                        out.print("<option selected=\"selected\"");
+//                                    } else {
                                         out.print("<option");
-                                    }
+//                                    }
 
                                     out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
                                     counter2++;
@@ -289,7 +222,6 @@
                     <div id="futureGradDate">
                         <label>Expected Graduation Date:</label> 
                         <input type="text" 
-                               value="<%=user.getGradDate()%>"
                                data-validation="date" 
                                data-validation-help="yyyy-mm-dd"
                                name="year" 
@@ -303,7 +235,6 @@
                     <div id="futureUserName">
                         <label>User Name:</label>
                         <input type="text"
-                               value="<%=user.getUserName()%>"
                                data-validation="length alphanumeric" 
                                data-validation-length="3-12" 
                                data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
@@ -438,6 +369,16 @@
                                        //                $('form input[type=button]').click(function() {
                                        //                    return confirm('Leave current page?');
                                        //                });
+                                       
+                                       <%
+                                           Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+                                       %> 
+                                       $('#futurepreneurFirstName').val("<%=user.getFirstName()%>");
+                                       $('#futurepreneurLastName').val("<%=user.getLastName()%>");
+                                       $('#futurepreneurEmail').val("<%=user.getEmail()%>");
+                                       $('#gpa').val("<%=user.getGpa()%>");
+                                       $('#year').val("<%=user.getGradDate()%>");
+                                       $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
                                    });
 
                                    function enableBeforeUnload() {
