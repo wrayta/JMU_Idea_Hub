@@ -49,7 +49,7 @@ public class MessageQuery {
                 result.add(mes);
             }
 
-//            dbQue.close();
+            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();

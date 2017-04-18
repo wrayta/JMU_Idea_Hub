@@ -47,7 +47,7 @@ public class MinorQuery {
                 result.add(maj);
             }
 
-//            dbQue.close();
+            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -57,7 +57,7 @@ public class UserQuery {
                 result.add(inv);
             }
 
-//            dbQue.close();
+            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();

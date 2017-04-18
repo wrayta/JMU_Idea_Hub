@@ -32,7 +32,7 @@ public class MessageUpdate {
         command += ")";
         try {
             int resultCount = dbComHand.doCommand(command);
-//            dbComHand.close();
+            dbComHand.close();
             return resultCount > 0;
         } catch (SQLException ex) {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
