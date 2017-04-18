@@ -408,7 +408,7 @@
                                                 data: $('#futurepreneur-edit-form').serialize(),
                                                 dataType: "json",
 //                                                contentType: "application/json;charset=utf-8",
-                                                async: false    
+                                                async: true    
 //                                                success: function() {
 //                                                    console.log("A futurepreneur was updated");
 //                                                    window.location = "idea.jsp";
