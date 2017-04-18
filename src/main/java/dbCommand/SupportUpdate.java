@@ -24,7 +24,7 @@ public class SupportUpdate {
 
         try {
             int resultCount = dbComHand.doCommand(command);
-            dbComHand.close();
+//            dbComHand.close();
         } catch (SQLException ex) {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,7 +39,7 @@ public class SupportUpdate {
 
         try {
             int resultCount = dbComHand.doCommand(command);
-            dbComHand.close();
+//            dbComHand.close();
         } catch (SQLException ex) {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }

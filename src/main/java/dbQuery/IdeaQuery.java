@@ -104,7 +104,7 @@ public class IdeaQuery {
                 result.add(id);
             }
 
-            dbQue.close();
+//            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -145,7 +145,7 @@ public class IdeaQuery {
                 result.add(id);
             }
 
-            dbQue.close();
+//            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();

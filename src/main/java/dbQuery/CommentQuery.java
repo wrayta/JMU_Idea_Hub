@@ -71,7 +71,7 @@ public class CommentQuery {
                 result.add(com);
             }
 
-            dbQue.close();
+//            dbQue.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();

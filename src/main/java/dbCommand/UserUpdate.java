@@ -153,7 +153,7 @@ public class UserUpdate {
             } else {
                 dbComHand.doCommand(invCommand);
             }
-            dbComHand.close();
+//            dbComHand.close();
             return (resultCount > 0);
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -32,7 +32,7 @@ public class IdeaUpdate {
         command += ")";
         try {
             int resultCount = dbComHand.doCommand(command);
-            dbComHand.close();
+//            dbComHand.close();
             return resultCount > 0;
         } catch (SQLException ex) {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +59,7 @@ public class IdeaUpdate {
             dbComHand.doCommand(supportsCommand);
             int ideaResultCount = dbComHand.doCommand(ideaCommand);
 
-            dbComHand.close();
+//            dbComHand.close();
             return ideaResultCount > 0;
 
         } catch (SQLException ex) {
@@ -82,7 +82,7 @@ public class IdeaUpdate {
 
         try {
             int resultCount = dbComHand.doCommand(command);
-            dbComHand.close();
+//            dbComHand.close();
             return resultCount > 0;
         } catch (SQLException ex) {
             Logger.getLogger(IdeaUpdate.class.getName()).log(Level.SEVERE, null, ex);
