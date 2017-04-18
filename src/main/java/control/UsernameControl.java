@@ -175,7 +175,7 @@ public class UsernameControl extends HttpServlet {
             update.updateFut(fut);
 
 //            request.getSession().setAttribute("firstName", request.getParameter("futurepreneurFirstName"));
-//            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
 
 //            response.setStatus(200);
             

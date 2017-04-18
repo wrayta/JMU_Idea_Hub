@@ -92,7 +92,7 @@
                                 + "</div>"
                                 + "</div>"
                                 + "</div>"
-                                + "<div id=\"welcomeUserString\">Welcome, " + ((User)(request.getSession().getAttribute("user"))).getFirstName()
+                                + "<div id=\"welcomeUserString\">Welcome, " + ((User)(session.getAttribute("user"))).getFirstName()
                                 + "</div>");
                     }
                 %>
