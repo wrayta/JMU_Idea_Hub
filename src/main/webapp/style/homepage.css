@@ -8,10 +8,18 @@ and open the template in the editor.
     Author     : thomas
 */
 
-body {
-    background: url(../img/shaking-hands.jpg); 
-    /*background: url(../img/jmu_logo.jpg);*/
-    background-repeat:no-repeat;
-    /*font-family: sans-serif;*/ 
+html {
+/*    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;*/
+    /*background: url(../img/shaking-hands.jpg);*/ 
+    /*background-repeat:no-repeat;*/
+    
+    background: url(../img/shaking-hands.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 

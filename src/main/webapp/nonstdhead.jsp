@@ -81,7 +81,8 @@
                         }
 
 //                        String firstName = query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber"));
-
+//                        System.out.println(((User)(request.getSession().getAttribute("user"))).getFirstName());
+                        
                         out.print("<div class=\"dropdown\">"
                                 + "<img id=\"profileDropDown\" src=\"img/signIn.bmp\">"
                                 + "<div class=\"dropdown-content\">"

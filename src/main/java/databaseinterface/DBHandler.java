@@ -51,7 +51,8 @@ public abstract class DBHandler {
 
         userId = dbUri.getUserInfo().split(":")[0];
         password = dbUri.getUserInfo().split(":")[1];
-        url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+        url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();   
+        
     }
 
     /*

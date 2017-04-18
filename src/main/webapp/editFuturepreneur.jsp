@@ -8,6 +8,8 @@
 <%@page import="entities.MajorMinor"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <jsp:useBean id="userQ" class="dbQuery.UserQuery" />
@@ -25,6 +27,7 @@
 
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JMU Idea Hub</title>
         <link rel="stylesheet" type="text/css" href="style/signInNice.css"/>
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ranga" rel="stylesheet">
@@ -64,6 +67,57 @@
                     alert("unable to connect to server");
                 }
             }
+            
+            function updateUserInfo() {
+                              
+                console.log("Inside updateUserInfo at the beginning!");
+                
+                var xmlhttp;
+                
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                    {
+//                        console.log("AJAX Request completed!");
+//                        window.location = "signInSignUp.jsp";
+                    }
+                };
+                
+//                var firstName = document.getElementById("futurepreneurFirstName").value;
+//                var lastName = document.getElementById("futurepreneurLastName").value;
+//                var email = document.getElementById("futurepreneurEmail").value;
+//                var password = document.getElementById("pwd1").value;
+//                var userName = document.getElementById("futurepreneurUsernameInputEditId").value;
+//                var gpa = document.getElementById("gpa").value;
+//                var gradeLevel = document.getElementById("gradeLevelSelect").value;
+//                var major = document.getElementById("majorSelect").value;
+//                var minor = document.getElementById("minorSelect").value;
+//                var graduationDate = document.getElementById("year").value;
+                
+                var fd = new FormData(document.getElementById("futurepreneur-edit-form"));                
+                
+//                fd.append("editedFut", "editedFutFirstName=" + firstName +
+//                            "&editedFutLastName=" + lastName +
+//                            "&editedFutEmail=" + email +
+//                            "&editedFutPassword=" + password +
+//                            "&editedFutUserName=" + userName +
+//                            "&editedFutGpa=" + gpa + 
+//                            "&editedFutGradeLevel=" + encodeURIComponent(unescape(gradeLevel)) +
+//                            "&editedFutMajor=" + major +
+//                            "&editedFutMinor=" + minor +
+//                            "&editedFutGraduationDate=" + graduationDate);
+
+                    xmlhttp.open("POST", "editFuturepreneur");
+                    xmlhttp.send(fd);
+            }
+            
         </script>
 
     </head>
@@ -80,7 +134,7 @@
 
             <!--<div id="futurepreneurFormWrapper">-->
 
-            <form method="post" name="editFuturepreneur" action="idea" onsubmit="disableBeforeUnload();" id="futurepreneur-edit-form">
+            <form method="POST" action="editFuturepreneur" name="editFuturepreneur" id="futurepreneur-edit-form" accept-charset="utf-8">
 
                 <fieldset>      
 
@@ -92,6 +146,7 @@
                                data-validation="required" 
                                data-validation-allowing="-_" 
                                name="futurepreneurFirstName"
+                               id="futurepreneurFirstName"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -106,6 +161,7 @@
                                data-validation="required" 
                                data-validation-allowing="-_"
                                name="futurepreneurLastName"
+                               id="futurepreneurLastName"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
 
@@ -120,6 +176,7 @@
                                value="<%=user.getEmail()%>"
                                data-validation="email"
                                name="futurepreneurEmail"
+                               id="futurepreneurEmail"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -133,6 +190,7 @@
                                data-validation="number" 
                                data-validation-allowing="range[0.00;4.0],float"
                                name="gpa"
+                               id="gpa"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -235,6 +293,7 @@
                                data-validation="date" 
                                data-validation-help="yyyy-mm-dd"
                                name="year" 
+                               id="year"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -265,6 +324,7 @@
                                data-validation-strength="2"
                                data-validation-error-msg="The password isn't strong enough (must include a number or special character)"
                                name="pwd1_confirmation"
+                               id="pwd1_confirmation"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -276,6 +336,7 @@
                         <input type="password" 
                                data-validation="confirmation"
                                name="pwd1"
+                               id="pwd1"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -287,7 +348,7 @@
 
                 <div id="registerFuturepreneur">
 
-                    <input type="submit" value="Update" id="futureRegisterSubmitButton"/>
+                    <input type="button" value="Update" id="futureRegisterSubmitButton"/>
 
                     <a href="idea.jsp"><input type="button" value="Cancel" id="futureRegisterCancelButton"/></a>
 
@@ -336,8 +397,31 @@
                                    //            $('#presentation').restrictLength( $('#pres-max-length') );
 
                                    $(document).ready(function() {
-                                       $('form input[type=submit]').click(function() {
-                                           return confirm('Confirm user profile update...');
+                                       $('form input[type=button]').click(function() {
+                                           if (confirm('Confirm user profile update...')) {
+                                               
+                                               disableBeforeUnload();
+                                                                                              
+                                               $.ajax({
+                                                type: $('#futurepreneur-edit-form').attr('method'),
+                                                url: $('#futurepreneur-edit-form').attr('action'),
+                                                data: $('#futurepreneur-edit-form').serialize(),
+                                                dataType: "json",
+//                                                contentType: "application/json;charset=utf-8",
+                                                async: false    
+//                                                success: function() {
+//                                                    console.log("A futurepreneur was updated");
+//                                                    window.location = "idea.jsp";
+//                                                }
+//                                                error: function() {
+//                                                    console.log("A futurepreneur was updated with errors");
+//                                                    window.location = "idea.jsp";
+//                                                }
+                                              }).always(function() {
+//                                                  console.log( "Was this a success???" );
+                                                  window.location = "idea.jsp";
+                                              });                        
+                                           }
                                        });
 
                                        $('form input[type=reset]').click(function() {

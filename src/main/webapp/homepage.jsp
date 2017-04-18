@@ -17,6 +17,7 @@
     <body>
         <jsp:include page="nonstdhead.jsp"/>
 
+<!--        <img src="img/shaking-hands.jpg">-->
         <%--<jsp:include page="stdfoot.jsp"/>--%>
 
 

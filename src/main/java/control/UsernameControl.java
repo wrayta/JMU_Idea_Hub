@@ -5,10 +5,14 @@
  */
 package control;
 
+import dbCommand.UserUpdate;
 import dbQuery.UserQuery;
 import entities.ErrorChecker;
+import entities.Futurepreneur;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -84,6 +88,114 @@ public class UsernameControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String url = null;
+        try {
+            url = new URI(request.getHeader("referer")).getPath();
+//            System.out.println("Start of new url: " + url);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (url.indexOf("editFuturepreneur") > 0) {
+            System.out.println("Mapping to editFuturepreneur success");
+            doUpdateFut(request, response);
+        }
+    }
+    
+    private void doUpdateFut(HttpServletRequest request, HttpServletResponse response) {
+
+        boolean added = true;
+//        UserQuery query = new UserQuery();
+        UserUpdate update = new UserUpdate();
+        UserQuery user = new UserQuery();
+//        HttpSession sesh = request.getSession(true);
+//
+//        String msg = "";
+//
+//        ErrorChecker err = new ErrorChecker();
+
+//        if (!err.validFirstName(request.getParameter("futurepreneurFirstName"))) {
+//            added = false;
+//            msg += "<p>Invalid First Name: Must be smaller than 30 characters</p>";
+//        }
+//
+//        if (!err.validLastName(request.getParameter("futurepreneurLastName"))) {
+//            added = false;
+//            msg += "<p>Invalid Last Name: Must be smaller than 40 characters</p>";
+//
+//        }
+//
+//        if (!err.validEmail(request.getParameter("futurepreneurEmail"))) {
+//            added = false;
+//            msg += "<p>Invalid Email: Must be smaller than 50 characters</p>";
+//        }
+//
+//        if (!err.validGPA(request.getParameter("gpa"))) {
+//            added = false;
+//            msg += "<p>Invalid GPA: Must be between 0.00 and 4.00</p>";
+//        }
+//
+//        if (!err.validStanding(request.getParameter("gradesel"))) {
+//            added = false;
+//            msg += "<p>Invalid Academic Standing: Must be smaller than 9 characters</p>";
+//        }
+//
+//        if (!err.validUserName(request.getParameter("futurepreneurUsername"))) {
+//            added = false;
+//            msg += "<p>Invalid User Name: Must be smaller than 20 characters</p>";
+//        }
+//
+//        if (!err.validPassword(request.getParameter("pwd1"))) {
+//            added = false;
+//            msg += "<p>Invalid Password: Must be between 8 and 12 characters</p>";
+//        }
+//
+//        if (!err.validGradDate(request.getParameter("year"))) {
+//            added = false;
+//            msg += "<p>Invalid Graduation Date: Must be smaller than 50 characters</p>";
+//        }
+        if (added) {
+
+            System.out.println("Last name: " + request.getParameter("futurepreneurLastName"));
+            String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
+            
+            Futurepreneur fut = new Futurepreneur(request.getParameter("futurepreneurFirstName"),
+                    request.getParameter("futurepreneurLastName"),
+                    request.getParameter("futurepreneurEmail"),
+                    password,
+                    request.getParameter("futurepreneurUsername"),
+                    request.getParameter("gradesel"),
+                    request.getParameter("year"),
+                    Double.parseDouble(request.getParameter("gpa")),
+                    Integer.parseInt(request.getParameter("majors")),
+                    Integer.parseInt(request.getParameter("minors")),
+                    (Integer) request.getSession().getAttribute("accountNumber"));
+
+            update.updateFut(fut);
+
+//            request.getSession().setAttribute("firstName", request.getParameter("futurepreneurFirstName"));
+            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+
+//            response.setStatus(200);
+            
+//            try {
+//                response.sendRedirect("idea.jsp");
+//            } catch (IOException ex) {
+//                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            
+            
+            
+            
+//        } else {
+//            sesh.setAttribute("errMsg", msg);
+//            try {
+//                response.sendRedirect("./error.jsp");
+//            } catch (IOException ex) {
+//                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+        }
     }
 
     private void doCheckUsername(HttpServletRequest request, HttpServletResponse response) {

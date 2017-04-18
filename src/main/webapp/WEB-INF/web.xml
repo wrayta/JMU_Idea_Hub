@@ -36,6 +36,10 @@
         <servlet-name>UsernameControl</servlet-name>
         <url-pattern>/username</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsernameControl</servlet-name>
+        <url-pattern>/editFuturepreneur</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
