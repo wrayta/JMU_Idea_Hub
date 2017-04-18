@@ -418,7 +418,14 @@
 //                                                    window.location = "idea.jsp";
 //                                                }
                                               }).always(function() {
-//                                                  console.log( "Was this a success???" );
+                                                  console.log("inside the first always");
+                                                  <% 
+                                                      User editedUser = userQ.getFut((Integer) (request.getSession().getAttribute("accountNumber")));
+                                                      request.getSession().setAttribute("user", editedUser);
+                                                  %>
+                                                      
+                                              }).always(function() {
+                                                  console.log("inside the second always");
                                                   window.location = "idea.jsp";
                                               });                        
                                            }

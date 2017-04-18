@@ -157,7 +157,7 @@ public class UsernameControl extends HttpServlet {
 //        }
         if (added) {
 
-            System.out.println("Last name: " + request.getParameter("futurepreneurLastName"));
+//            System.out.println("Last name: " + request.getParameter("futurepreneurLastName"));
             String password = IdeaHubControl.hashPassword(request.getParameter("pwd1"));
             
             Futurepreneur fut = new Futurepreneur(request.getParameter("futurepreneurFirstName"),
@@ -175,7 +175,7 @@ public class UsernameControl extends HttpServlet {
             update.updateFut(fut);
 
 //            request.getSession().setAttribute("firstName", request.getParameter("futurepreneurFirstName"));
-            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+//            request.getSession().setAttribute("user", (Futurepreneur) user.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
 
 //            response.setStatus(200);
             
