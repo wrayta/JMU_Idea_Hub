@@ -311,7 +311,6 @@
                                        $('#futurepreneurLastName').val("<%=user.getLastName()%>");
                                        $('#futurepreneurEmail').val("<%=user.getEmail()%>");
                                        $('#gpa').val("<%=user.getGpa()%>");
-                                       $('#year').val("<%=user.getGradDate()%>");
                                        $.ajax({
                                             type: "get",
                                             url: "getMajorsForEdit",
@@ -320,7 +319,7 @@
                                             console.log("The data is: " + data);
                                             $('#majorSelect').append(data);
                                         });
-                                        $.ajax({
+                                       $.ajax({
                                             type: "get",
                                             url: "getMinorsForEdit",
                                             async: "true"
@@ -328,6 +327,7 @@
                                             console.log("The data is: " + data);
                                             $('#minorSelect').append(data);
                                         });
+                                       $('#year').val("<%=user.getGradDate()%>");
                                        $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
                                    });
 
