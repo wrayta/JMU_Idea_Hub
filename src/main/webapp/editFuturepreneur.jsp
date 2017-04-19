@@ -162,30 +162,10 @@
                         
                     </div>
 
-                    <%
-                        ArrayList<Object> majorData = majorQ.getMajorTable();
-                        Iterator it = majorData.iterator();
-                        int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
-                    %>
-
                     <div id="futureMajor">
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="majors">
-                            <%
-                                int counter = 1;
-                                while (it.hasNext()) {
-                                    MajorMinor maj = (MajorMinor) it.next();
-//                                    if (counter == user.getMajor()) {
-//                                        out.print("<option selected=\"selected\"");
-//                                    } else {
-                                        out.print("<option");
-//                                    }
-
-                                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-                                    counter++;
-                                }
-                            %>
                         </select>
                     </div>
 
@@ -299,33 +279,9 @@
                                    $.validate({
                                        form: '#futurepreneur-edit-form',
                                        ignore: ['#gradesel', '#majors', '#minors'],
-                                       //              validateOnBlur : false,
                                        borderColorOnError: '#440088',
                                        modules: 'date, security',
-                                       //              onError : function($form) {
-                                       //                alert('Validation of form '+$form.attr('id')+' failed!');
-                                       //              },
-
-                                       //              onSuccess : function($form) {
-                                       //                alert('The form '+$form.attr('id')+' is valid!');
-                                       //                return false; // Will stop the submission of the form
-                                       //              },
-
-                                       //              onValidate : function($form) {
-                                       //                return {
-                                       //                    element : $('#gradesel'),
-                                       //                    message : 'This input has an invalid value for some reason'
-                                       //                }
-                                       //              },
-
-                                       //              onElementValidate : function(valid, $el, $form, errorMess) {
-                                       //                alert('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
-                                       //              }
-
                                    });
-
-                                   // Restrict presentation length
-                                   //            $('#presentation').restrictLength( $('#pres-max-length') );
 
                                    $(document).ready(function() {
                                        $('#futureRegisterSubmitButton').click(function() {
@@ -378,6 +334,14 @@
                                        $('#futurepreneurEmail').val("<%=user.getEmail()%>");
                                        $('#gpa').val("<%=user.getGpa()%>");
                                        $('#year').val("<%=user.getGradDate()%>");
+                                       $.ajax({
+                                            type: "get",
+                                            url: "getMajorsForEdit",
+                                            async: "true"
+                                        }).always(function(data) {
+                                            console.log("The data is: " + data);
+                                            $('#majorSelect').append(data);
+                                        });
                                        $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
                                    });
 

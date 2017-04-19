@@ -20,6 +20,10 @@
         <servlet-name>UsernameControl</servlet-name>
         <servlet-class>control.UsernameControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MajorMinorControl</servlet-name>
+        <servlet-class>control.MajorMinorControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IdeaHubControl</servlet-name>
         <url-pattern>/idea</url-pattern>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
         <url-pattern>/updateUserAttribute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MajorMinorControl</servlet-name>
+        <url-pattern>/getMajorsForEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
