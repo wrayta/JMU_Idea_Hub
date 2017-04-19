@@ -169,32 +169,10 @@
                         </select>
                     </div>
 
-                    <%
-                        ArrayList<Object> minorData = minorQ.getMinorTable();
-                        Iterator it2 = minorData.iterator();
-                        int rows2 = ((Integer) it2.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
-                    %>
-
                     <div id="futureMinor">
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="minors">
-                            <%
-                                int counter2 = 1;
-//                                out.print("asdfsadfsadf " + user.getMinor());
-                                while (it2.hasNext()) {
-                                    MajorMinor min = (MajorMinor) it2.next();
-
-//                                    if (counter2 == user.getMinor()) {
-//                                        out.print("<option selected=\"selected\"");
-//                                    } else {
-                                        out.print("<option");
-//                                    }
-
-                                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-                                    counter2++;
-                                }
-                            %>
                         </select>
                     </div>
 
@@ -341,6 +319,14 @@
                                         }).always(function(data) {
                                             console.log("The data is: " + data);
                                             $('#majorSelect').append(data);
+                                        });
+                                        $.ajax({
+                                            type: "get",
+                                            url: "getMinorsForEdit",
+                                            async: "true"
+                                        }).always(function(data) {
+                                            console.log("The data is: " + data);
+                                            $('#minorSelect').append(data);
                                         });
                                        $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
                                    });

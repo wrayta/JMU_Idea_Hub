@@ -7,6 +7,7 @@
 package control;
 
 import dbQuery.MajorQuery;
+import dbQuery.MinorQuery;
 import entities.Futurepreneur;
 import entities.MajorMinor;
 import java.io.IOException;
@@ -70,15 +71,15 @@ public class MajorMinorControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = null;
-        try {
-            url = new URI(request.getHeader("referer")).getPath();
-//            System.out.println("Start of new url: " + url);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        StringBuffer url = null;
         
-        if (url.indexOf("editFuturepreneur") > 0) {
+        url = request.getRequestURL();
+      
+        if (url.indexOf("getMinorsForEdit") > 0) {
+            System.out.println("doGetMinorsForEditFuturepreneur");
+            doGetMinorsForEditFuturepreneur(request, response);
+        }
+        else if (url.indexOf("getMajorsForEdit") > 0) {
             System.out.println("doGetMajorsForEditFuturepreneur");
             doGetMajorsForEditFuturepreneur(request, response);
         }
@@ -96,6 +97,36 @@ public class MajorMinorControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    }
+    
+    private void doGetMinorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
+        MinorQuery minorQ = new MinorQuery();
+        Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+        
+        ArrayList<Object> minorData = minorQ.getMinorTable();
+        Iterator it2 = minorData.iterator();
+        int rows2 = ((Integer) it2.next()).intValue();
+        
+        response.setContentType("text/html;charset=UTF-8");
+
+        try {
+            PrintWriter out = response.getWriter();
+            int counter2 = 1;
+            while (it2.hasNext()) {
+                MajorMinor min = (MajorMinor) it2.next();
+
+                if (counter2 == user.getMinor()) {
+                    out.print("<option selected=\"selected\"");
+                } else {
+                    out.print("<option");
+                }
+
+                out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
+                counter2++;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void doGetMajorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {

@@ -52,6 +52,10 @@
         <servlet-name>MajorMinorControl</servlet-name>
         <url-pattern>/getMajorsForEdit</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MajorMinorControl</servlet-name>
+        <url-pattern>/getMinorsForEdit</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
