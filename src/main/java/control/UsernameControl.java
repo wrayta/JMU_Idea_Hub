@@ -84,10 +84,7 @@ public class UsernameControl extends HttpServlet {
         } else if (request.getParameter("editedUsername") != null) {
             System.out.println("doGet check for editedUsername");
             doCheckEditedUsername(request, response);
-        } else if (url.indexOf("editFuturepreneur") > 0) {
-            System.out.println("Mapping to updateUserAttribute success");
-            doUpdateUserAttribute(request, response);
-        }
+        } 
     }
 
     /**
@@ -102,27 +99,15 @@ public class UsernameControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = null;
-        try {
-            url = new URI(request.getHeader("referer")).getPath();
-            System.out.println("Start of new url: " + url);
-            
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        StringBuffer url = null;
         
-        if (url.indexOf("editFuturepreneur") > 0) {
-            System.out.println("Mapping to editFuturepreneur success");
+        url = request.getRequestURL();
+        
+        if (url.indexOf("updateFuturepreneur") > 0) {
+            System.out.println("Mapping to updateFuturepreneur success");
             doUpdateFut(request, response);
         }
         
-    }
-    
-    private void doUpdateUserAttribute(HttpServletRequest request, HttpServletResponse response) {
-        UserQuery user = new UserQuery();
-
-        User editedFuturepreneur = user.getFut((Integer) (request.getSession().getAttribute("accountNumber")));
-        request.getSession().setAttribute("user", editedFuturepreneur);
     }
     
     private void doUpdateFut(HttpServletRequest request, HttpServletResponse response) {
@@ -197,16 +182,16 @@ public class UsernameControl extends HttpServlet {
             update.updateFut(fut);
 
 //            request.getSession().setAttribute("firstName", request.getParameter("futurepreneurFirstName"));
-//            User editedFuturepreneur = user.getFut((Integer) (request.getSession().getAttribute("accountNumber")));
-//            request.getSession().setAttribute("user", editedFuturepreneur);
+            User editedFuturepreneur = user.getFut((Integer) (request.getSession().getAttribute("accountNumber")));
+            request.getSession().setAttribute("user", editedFuturepreneur);
 
 //            response.setStatus(200);
             
-//            try {
-//                response.sendRedirect("idea.jsp");
-//            } catch (IOException ex) {
-//                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            try {
+                response.sendRedirect("idea.jsp");
+            } catch (IOException ex) {
+                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
             

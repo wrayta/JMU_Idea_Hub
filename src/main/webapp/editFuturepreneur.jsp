@@ -82,7 +82,7 @@
 
             <!--<div id="futurepreneurFormWrapper">-->
 
-            <form method="POST" action="editFuturepreneur" name="editFuturepreneur" id="futurepreneur-edit-form" accept-charset="utf-8">
+            <form method="post" action="updateFuturepreneur" name="editFuturepreneur" onsubmit="disableBeforeUnload();" id="futurepreneur-edit-form" accept-charset="utf-8">
 
                 <fieldset>      
 
@@ -237,7 +237,7 @@
 
                 <div id="registerFuturepreneur">
 
-                    <input type="button" value="Update" id="futureRegisterSubmitButton"/>
+                    <input type="submit" value="Update" id="futureRegisterSubmitButton"/>
 
                     <a href="idea.jsp"><input type="button" value="Cancel" id="futureRegisterCancelButton"/></a>
 
@@ -262,38 +262,8 @@
                                    });
 
                                    $(document).ready(function() {
-                                       $('#futureRegisterSubmitButton').click(function() {
-                                           if (confirm('Confirm user profile update...')) {
-                                               
-                                               disableBeforeUnload();
-                                                                                              
-                                               $.ajax({
-                                                type: $('#futurepreneur-edit-form').attr('method'),
-                                                url: $('#futurepreneur-edit-form').attr('action'),
-                                                data: $('#futurepreneur-edit-form').serialize(),
-                                                dataType: "json",
-//                                                contentType: "application/json;charset=utf-8",
-                                                async: false    
-//                                                success: function() {
-//                                                    console.log("A futurepreneur was updated");
-//                                                    window.location = "idea.jsp";
-//                                                }
-//                                                error: function() {
-//                                                    console.log("A futurepreneur was updated with errors");
-//                                                    window.location = "idea.jsp";
-//                                                }
-                                              }).always(function() {
-                                                  $.ajax({
-                                                    type: "get",
-                                                    url: "updateUserAttribute",
-                                                    async: false
-                                                }).always(function() {
-                                                    console.log("the always function fired");
-                                                });
-                                              }).always(function() {
-                                                  window.location = "idea.jsp";
-                                              });                        
-                                           }
+                                       $('form input[type=submit]').click(function() {
+                                           return confirm('Confirm user profile update...');
                                        });
 
                                        $('form input[type=reset]').click(function() {

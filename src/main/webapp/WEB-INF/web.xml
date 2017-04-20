@@ -42,7 +42,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
-        <url-pattern>/editFuturepreneur</url-pattern>
+        <url-pattern>/updateFuturepreneur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
