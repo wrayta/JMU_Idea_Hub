@@ -284,18 +284,52 @@
                                        $.ajax({
                                             type: "get",
                                             url: "getMajorsForEdit",
-                                            async: "true"
-                                        }).always(function(data) {
+                                            async: "true",
+                                            tryCount: 0,
+                                            retryLimit: 3,
+                                            timeout: 3000
+                                        }).done(function(data) {
                                             console.log("The data is: " + data);
                                             $('#majorSelect').append(data);
+                                        }).fail(function(jqXHR, textStatus) {
+                                            if (textStatus === 'timeout') {
+                                                this.tryCount++;
+                                                if (this.tryCount <= this.retryLimit) {
+                                                    //try again
+                                                    $.ajax(this);
+                                                    return;
+                                                }            
+                                                return;
+                                            } if (xhr.status == 500) {
+                                                //handle error
+                                            } else {
+                                                //handle error
+                                            }
                                         });
                                        $.ajax({
                                             type: "get",
                                             url: "getMinorsForEdit",
-                                            async: "true"
-                                        }).always(function(data) {
+                                            async: "true",
+                                            tryCount: 0,
+                                            retryLimit: 3,
+                                            timeout: 3000
+                                        }).done(function(data) {
                                             console.log("The data is: " + data);
                                             $('#minorSelect').append(data);
+                                        }).fail(function(jqXHR, textStatus) {
+                                            if (textStatus === 'timeout') {
+                                                this.tryCount++;
+                                                if (this.tryCount <= this.retryLimit) {
+                                                    //try again
+                                                    $.ajax(this);
+                                                    return;
+                                                }            
+                                                return;
+                                            } if (xhr.status == 500) {
+                                                //handle error
+                                            } else {
+                                                //handle error
+                                            }
                                         });
                                        $('#year').val("<%=user.getGradDate()%>");
                                        $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
