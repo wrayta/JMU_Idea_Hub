@@ -105,7 +105,7 @@ public class MajorMinorControl extends HttpServlet {
         
         ArrayList<Object> minorData = minorQ.getMinorTable();
         Iterator it2 = minorData.iterator();
-        int rows2 = ((Integer) it2.next()).intValue();
+//        int rows = ((Integer) it2.next()).intValue();
         
         response.setContentType("text/html;charset=UTF-8");
 
@@ -135,7 +135,7 @@ public class MajorMinorControl extends HttpServlet {
         
         ArrayList<Object> majorData = majorQ.getMajorTable();
         Iterator it = majorData.iterator();
-        int rows = ((Integer) it.next()).intValue();
+//        int rows = ((Integer) it.next()).intValue();
          
         response.setContentType("text/html;charset=UTF-8");
         

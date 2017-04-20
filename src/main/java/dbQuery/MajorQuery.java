@@ -34,8 +34,8 @@ public class MajorQuery {
             ResultSet rs = dbQue.doQuery(query);
             ResultSetMetaData rsmd = rs.getMetaData();
 
-            int numOfCols = rsmd.getColumnCount();
-            result.add(new Integer(numOfCols));
+//            int numOfCols = rsmd.getColumnCount();
+//            result.add(new Integer(numOfCols));
 
             while (rs.next()) {
                 int i = 1;
