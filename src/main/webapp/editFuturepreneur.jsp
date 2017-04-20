@@ -291,7 +291,8 @@
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
                                             $('#majorSelect').append(data);
-                                        }).fail(function(jqXHR, textStatus) {
+                                        }).fail(function(xhr, textStatus) {
+                                            console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
                                                 this.tryCount++;
                                                 if (this.tryCount <= this.retryLimit) {
@@ -316,7 +317,8 @@
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
                                             $('#minorSelect').append(data);
-                                        }).fail(function(jqXHR, textStatus) {
+                                        }).fail(function(xhr, textStatus) {
+                                            console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
                                                 this.tryCount++;
                                                 if (this.tryCount <= this.retryLimit) {
