@@ -115,19 +115,15 @@ public class MajorMinorControl extends HttpServlet {
             while (it2.hasNext()) {
                 MajorMinor min = (MajorMinor) it2.next();
 
-                if (min.getNum() == 1) {
-                    //Do nothing because hard-coded default option
-                }
-//                else if (counter2 == user.getMinor()) {
-//                    out.print("<option selected=\"selected\"");
-//                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-//
-//                } 
+                if (counter2 == user.getMinor()) {
+                    out.print("<option selected=\"selected\"");
+                } 
                 else {
                     out.print("<option");
-                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
                 } 
                 
+                out.print(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
+
                 counter2++;
 
             }
@@ -151,20 +147,15 @@ public class MajorMinorControl extends HttpServlet {
             int counter = 1;
             while (it.hasNext()) {
                 MajorMinor maj = (MajorMinor) it.next();
-                if (maj.getNum() == 1) {
-                    //Do nothing because hard-coded default option
+                if (counter == user.getMajor()) {
+                    out.print("<option selected=\"selected\"");
                 }
-//                else if (counter == user.getMajor()) {
-//                    out.print("<option selected=\"selected\"");
-//                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-//
-//                }
                 else {
                     out.print("<option");
-                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-
                 }
                 
+                out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
+
                 counter++;
 
             }

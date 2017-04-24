@@ -166,7 +166,6 @@
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="majors">
-                                <option value="1">General Studies</option>
                         </select>
                     </div>
 
@@ -174,7 +173,6 @@
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="minors">
-                                <option value="1">General Studies</option>
                         </select>
                     </div>
 
@@ -293,12 +291,16 @@
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
                                             console.log("Data length: " + data.length);
-//                                            if(data.length === 0) {
-//                                                $('#majorSelect').append("<option selected=\"selected\" value=\"1\">General Studies</option>");
-//                                            }
-//                                            else {
+                                            if(data.length === 0) {
+                                                this.tryCount++;
+                                                if (this.tryCount <= this.retryLimit) {
+                                                    //try again
+                                                    $.ajax(this);
+                                                }        
+                                            }
+                                            else {
                                                 $('#majorSelect').append(data);
-//                                            }
+                                            }
                                         }).fail(function(xhr, textStatus) {
                                             console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
@@ -321,12 +323,16 @@
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
                                             console.log("Data length: " + data.length);
-//                                            if(data.length === 0) {
-//                                                $('#minorSelect').append("<option selected=\"selected\" value=\"1\">General Studies</option>");
-//                                            }
-//                                            else {
+                                            if(data.length === 0) {
+                                                this.tryCount++;
+                                                if (this.tryCount <= this.retryLimit) {
+                                                    //try again
+                                                    $.ajax(this);
+                                                }   
+                                            }
+                                            else {
                                                 $('#minorSelect').append(data);
-//                                            }
+                                            }
                                         }).fail(function(xhr, textStatus) {
                                             console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
