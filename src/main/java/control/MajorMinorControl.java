@@ -111,7 +111,7 @@ public class MajorMinorControl extends HttpServlet {
 
         try {
             PrintWriter out = response.getWriter();
-            int counter2 = 2;
+            int counter2 = 1;
             while (it2.hasNext()) {
                 MajorMinor min = (MajorMinor) it2.next();
 
@@ -141,7 +141,7 @@ public class MajorMinorControl extends HttpServlet {
         
         try {
             PrintWriter out = response.getWriter();
-            int counter = 2;
+            int counter = 1;
             while (it.hasNext()) {
                 MajorMinor maj = (MajorMinor) it.next();
                 if (counter == user.getMajor()) {

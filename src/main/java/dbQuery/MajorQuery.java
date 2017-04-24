@@ -25,7 +25,7 @@ public class MajorQuery {
      * @return
      */
     public ArrayList<Object> getMajorTable() {
-        String query = "select * from majors";
+        String query = "SELECT * FROM majors WHERE majorNumber != 1"; 
         ArrayList<Object> result = new ArrayList<Object>(); //Why is this OBJECT???????
 
         try {
@@ -38,7 +38,7 @@ public class MajorQuery {
 //            result.add(new Integer(numOfCols));
 
             while (rs.next()) {
-                int i = 1;
+                int i = 2;
                 int majNum = rs.getInt(i++);
                 String majName = rs.getString(i++);
 
