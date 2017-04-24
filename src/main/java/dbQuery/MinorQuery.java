@@ -25,7 +25,7 @@ public class MinorQuery {
      * @return
      */
     public ArrayList<Object> getMinorTable() {
-        String query = "SELECT * FROM minors WHERE minorNumber != 1";
+        String query = "SELECT * FROM minors";
         ArrayList<Object> result = new ArrayList<Object>(); //Why is this OBJECT???????
 
         try {
@@ -38,7 +38,7 @@ public class MinorQuery {
 //            result.add(new Integer(numOfCols));
 
             while (rs.next()) {
-                int i = 2;
+                int i = 1;
                 int majNum = rs.getInt(i++);
                 String majName = rs.getString(i++);
 

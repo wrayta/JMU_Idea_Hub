@@ -166,7 +166,7 @@
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="majors">
-                                <option selected="selected" value="1">General Studies</option>
+                                <option value="1">General Studies</option>
                         </select>
                     </div>
 
@@ -174,7 +174,7 @@
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="minors">
-                                <option selected="selected" value="1">General Studies</option>
+                                <option value="1">General Studies</option>
                         </select>
                     </div>
 
