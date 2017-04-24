@@ -118,11 +118,12 @@ public class MajorMinorControl extends HttpServlet {
                 if (min.getNum() == 1) {
                     //Do nothing because hard-coded default option
                 }
-                else if (counter2 == user.getMinor()) {
-                    out.print("<option selected=\"selected\"");
-                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-
-                } else {
+//                else if (counter2 == user.getMinor()) {
+//                    out.print("<option selected=\"selected\"");
+//                    out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
+//
+//                } 
+                else {
                     out.print("<option");
                     out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
                 } 
@@ -153,11 +154,12 @@ public class MajorMinorControl extends HttpServlet {
                 if (maj.getNum() == 1) {
                     //Do nothing because hard-coded default option
                 }
-                else if (counter == user.getMajor()) {
-                    out.print("<option selected=\"selected\"");
-                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-
-                } else {
+//                else if (counter == user.getMajor()) {
+//                    out.print("<option selected=\"selected\"");
+//                    out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
+//
+//                }
+                else {
                     out.print("<option");
                     out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
 
