@@ -166,6 +166,9 @@
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="majors">
+                            <option value="1">General Studies</option>
+                            <option value="2">Computer Science</option>
+                            <option value="3">Biology</option>
                         </select>
                     </div>
 
@@ -173,6 +176,9 @@
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
                                 onkeyup="enableBeforeUnload();" name="minors">
+                            <option value="1">General Studies</option>
+                            <option value="2">General Music</option>
+                            <option value="3">English</option>
                         </select>
                     </div>
 
@@ -281,70 +287,72 @@
                                        $('#futurepreneurLastName').val("<%=user.getLastName()%>");
                                        $('#futurepreneurEmail').val("<%=user.getEmail()%>");
                                        $('#gpa').val("<%=user.getGpa()%>");
-                                       $.ajax({
-                                            type: "get",
-                                            url: "getMajorsForEdit",
-                                            async: "true",
-                                            tryCount: 0,
-                                            retryLimit: 3,
-                                            timeout: 3000
-                                        }).done(function(data) {
-                                            console.log("The data is: " + data);
-                                            console.log("Data length: " + data.length);
-                                            if(data.length === 0) {
-                                                this.tryCount++;
-                                                if (this.tryCount <= this.retryLimit) {
-                                                    //try again
-                                                    $.ajax(this);
-                                                }        
-                                            }
-                                            else {
-                                                $('#majorSelect').append(data);
-                                            }
-                                        }).fail(function(xhr, textStatus) {
-                                            console.log("Failed: " + xhr.status);
-                                            if (textStatus === 'timeout') {
-                                                this.tryCount++;
-                                                if (this.tryCount <= this.retryLimit) {
-                                                    //try again
-                                                    $.ajax(this);
-                                                    return;
-                                                }            
-                                                return;
-                                            }
-                                        });
-                                       $.ajax({
-                                            type: "get",
-                                            url: "getMinorsForEdit",
-                                            async: "true",
-                                            tryCount: 0,
-                                            retryLimit: 3,
-                                            timeout: 3000
-                                        }).done(function(data) {
-                                            console.log("The data is: " + data);
-                                            console.log("Data length: " + data.length);
-                                            if(data.length === 0) {
-                                                this.tryCount++;
-                                                if (this.tryCount <= this.retryLimit) {
-                                                    //try again
-                                                    $.ajax(this);
-                                                }   
-                                            }
-                                            else {
-                                                $('#minorSelect').append(data);
-                                            }
-                                        }).fail(function(xhr, textStatus) {
-                                            console.log("Failed: " + xhr.status);
-                                            if (textStatus === 'timeout') {
-                                                this.tryCount++;
-                                                if (this.tryCount <= this.retryLimit) {
-                                                    //try again
-                                                    $.ajax(this);
-                                                    return;
-                                                }            
-                                                return;
-                                            }
-                                        });
+                                       $('#majorSelect').val("<%=user.getMajor()%>");
+                                       $('#minorSelect').val("<%=user.getMinor()%>");
+//                                       $.ajax({
+//                                            type: "get",
+//                                            url: "getMajorsForEdit",
+//                                            async: "true",
+//                                            tryCount: 0,
+//                                            retryLimit: 3,
+//                                            timeout: 3000
+//                                        }).done(function(data) {
+//                                            console.log("The data is: " + data);
+//                                            console.log("Data length: " + data.length);
+//                                            if(data.length === 0) {
+//                                                this.tryCount++;
+//                                                if (this.tryCount <= this.retryLimit) {
+//                                                    //try again
+//                                                    $.ajax(this);
+//                                                }        
+//                                            }
+//                                            else {
+//                                                $('#majorSelect').append(data);
+//                                            }
+//                                        }).fail(function(xhr, textStatus) {
+//                                            console.log("Failed: " + xhr.status);
+//                                            if (textStatus === 'timeout') {
+//                                                this.tryCount++;
+//                                                if (this.tryCount <= this.retryLimit) {
+//                                                    //try again
+//                                                    $.ajax(this);
+//                                                    return;
+//                                                }            
+//                                                return;
+//                                            }
+//                                        });
+//                                       $.ajax({
+//                                            type: "get",
+//                                            url: "getMinorsForEdit",
+//                                            async: "true",
+//                                            tryCount: 0,
+//                                            retryLimit: 3,
+//                                            timeout: 3000
+//                                        }).done(function(data) {
+//                                            console.log("The data is: " + data);
+//                                            console.log("Data length: " + data.length);
+//                                            if(data.length === 0) {
+//                                                this.tryCount++;
+//                                                if (this.tryCount <= this.retryLimit) {
+//                                                    //try again
+//                                                    $.ajax(this);
+//                                                }   
+//                                            }
+//                                            else {
+//                                                $('#minorSelect').append(data);
+//                                            }
+//                                        }).fail(function(xhr, textStatus) {
+//                                            console.log("Failed: " + xhr.status);
+//                                            if (textStatus === 'timeout') {
+//                                                this.tryCount++;
+//                                                if (this.tryCount <= this.retryLimit) {
+//                                                    //try again
+//                                                    $.ajax(this);
+//                                                    return;
+//                                                }            
+//                                                return;
+//                                            }
+//                                        });
                                        $('#year').val("<%=user.getGradDate()%>");
                                        $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
                                    });

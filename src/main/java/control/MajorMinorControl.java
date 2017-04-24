@@ -77,11 +77,11 @@ public class MajorMinorControl extends HttpServlet {
       
         if (url.indexOf("getMinorsForEdit") > 0) {
             System.out.println("doGetMinorsForEditFuturepreneur");
-            doGetMinorsForEditFuturepreneur(request, response);
+//            doGetMinorsForEditFuturepreneur(request, response);
         }
         else if (url.indexOf("getMajorsForEdit") > 0) {
             System.out.println("doGetMajorsForEditFuturepreneur");
-            doGetMajorsForEditFuturepreneur(request, response);
+//            doGetMajorsForEditFuturepreneur(request, response);
         }
     }
 
@@ -99,70 +99,70 @@ public class MajorMinorControl extends HttpServlet {
         processRequest(request, response);
     }
     
-    private void doGetMinorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
-        MinorQuery minorQ = new MinorQuery();
-        Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
-        
-        ArrayList<Object> minorData = minorQ.getMinorTable();
-        Iterator it2 = minorData.iterator();
-//        int rows = ((Integer) it2.next()).intValue();
-        
-        response.setContentType("text/html;charset=UTF-8");
-
-        try {
-            PrintWriter out = response.getWriter();
-            int counter2 = 1;
-            while (it2.hasNext()) {
-                MajorMinor min = (MajorMinor) it2.next();
-
-                if (counter2 == user.getMinor()) {
-                    out.print("<option selected=\"selected\"");
-                } 
-                else {
-                    out.print("<option");
-                } 
-                
-                out.print(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-
-                counter2++;
-
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void doGetMinorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
+//        MinorQuery minorQ = new MinorQuery();
+//        Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+//        
+//        ArrayList<Object> minorData = minorQ.getMinorTable();
+//        Iterator it2 = minorData.iterator();
+////        int rows = ((Integer) it2.next()).intValue();
+//        
+//        response.setContentType("text/html;charset=UTF-8");
+//
+//        try {
+//            PrintWriter out = response.getWriter();
+//            int counter2 = 1;
+//            while (it2.hasNext()) {
+//                MajorMinor min = (MajorMinor) it2.next();
+//
+//                if (counter2 == user.getMinor()) {
+//                    out.print("<option selected=\"selected\"");
+//                } 
+//                else {
+//                    out.print("<option");
+//                } 
+//                
+//                out.print(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
+//
+//                counter2++;
+//
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
-    private void doGetMajorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
-        MajorQuery majorQ = new MajorQuery();
-        Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
-        
-        ArrayList<Object> majorData = majorQ.getMajorTable();
-        Iterator it = majorData.iterator();
-//        int rows = ((Integer) it.next()).intValue();
-         
-        response.setContentType("text/html;charset=UTF-8");
-        
-        try {
-            PrintWriter out = response.getWriter();
-            int counter = 1;
-            while (it.hasNext()) {
-                MajorMinor maj = (MajorMinor) it.next();
-                if (counter == user.getMajor()) {
-                    out.print("<option selected=\"selected\"");
-                }
-                else {
-                    out.print("<option");
-                }
-                
-                out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-
-                counter++;
-
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void doGetMajorsForEditFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
+//        MajorQuery majorQ = new MajorQuery();
+//        Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+//        
+//        ArrayList<Object> majorData = majorQ.getMajorTable();
+//        Iterator it = majorData.iterator();
+////        int rows = ((Integer) it.next()).intValue();
+//         
+//        response.setContentType("text/html;charset=UTF-8");
+//        
+//        try {
+//            PrintWriter out = response.getWriter();
+//            int counter = 1;
+//            while (it.hasNext()) {
+//                MajorMinor maj = (MajorMinor) it.next();
+//                if (counter == user.getMajor()) {
+//                    out.print("<option selected=\"selected\"");
+//                }
+//                else {
+//                    out.print("<option");
+//                }
+//                
+//                out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
+//
+//                counter++;
+//
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     /**
      * Returns a short description of the servlet.
