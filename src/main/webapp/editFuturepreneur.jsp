@@ -290,7 +290,13 @@
                                             timeout: 3000
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
-                                            $('#majorSelect').append(data);
+                                            console.log("Data length: " + data.length);
+                                            if(data.length === 0) {
+                                                $('#majorSelect').append("<option selected=\"selected\" value=\"0\">General Studies</option>");
+                                            }
+                                            else {
+                                                $('#majorSelect').append(data);
+                                            }
                                         }).fail(function(xhr, textStatus) {
                                             console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
@@ -301,10 +307,6 @@
                                                     return;
                                                 }            
                                                 return;
-                                            } if (xhr.status == 500) {
-                                                //handle error
-                                            } else {
-                                                //handle error
                                             }
                                         });
                                        $.ajax({
@@ -316,7 +318,13 @@
                                             timeout: 3000
                                         }).done(function(data) {
                                             console.log("The data is: " + data);
-                                            $('#minorSelect').append(data);
+                                            console.log("Data length: " + data.length);
+                                            if(data.length === 0) {
+                                                $('#minorSelect').append("<option selected=\"selected\" value=\"0\">General Studies</option>");
+                                            }
+                                            else {
+                                                $('#minorSelect').append(data);
+                                            }
                                         }).fail(function(xhr, textStatus) {
                                             console.log("Failed: " + xhr.status);
                                             if (textStatus === 'timeout') {
@@ -327,10 +335,6 @@
                                                     return;
                                                 }            
                                                 return;
-                                            } if (xhr.status == 500) {
-                                                //handle error
-                                            } else {
-                                                //handle error
                                             }
                                         });
                                        $('#year').val("<%=user.getGradDate()%>");
