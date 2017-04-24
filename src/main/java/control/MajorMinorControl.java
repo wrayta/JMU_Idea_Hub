@@ -111,23 +111,24 @@ public class MajorMinorControl extends HttpServlet {
 
         try {
             PrintWriter out = response.getWriter();
-            int counter2 = 2;
+            int counter2 = 1;
             while (it2.hasNext()) {
                 MajorMinor min = (MajorMinor) it2.next();
 
-                if (user.getMinor() == 1) {
+                if (min.getNum() == 1) {
                     //Do nothing because hard-coded default option
                 }
                 else if (counter2 == user.getMinor()) {
                     out.print("<option selected=\"selected\"");
                     out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-                    counter2++;
 
                 } else {
                     out.print("<option");
                     out.println(" value=\"" + counter2 + "\">" + min.getName() + "</option>");
-                    counter2++;
                 } 
+                
+                counter2++;
+
             }
         } catch (IOException ex) {
             Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,23 +147,24 @@ public class MajorMinorControl extends HttpServlet {
         
         try {
             PrintWriter out = response.getWriter();
-            int counter = 2;
+            int counter = 1;
             while (it.hasNext()) {
                 MajorMinor maj = (MajorMinor) it.next();
-                if (user.getMajor() == 1) {
+                if (maj.getNum() == 1) {
                     //Do nothing because hard-coded default option
                 }
                 else if (counter == user.getMajor()) {
                     out.print("<option selected=\"selected\"");
                     out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-                    counter++;
 
                 } else {
                     out.print("<option");
                     out.print(" value=\"" + counter + "\">" + maj.getName() + "</option>");
-                    counter++;
 
                 }
+                
+                counter++;
+
             }
         } catch (IOException ex) {
             Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
