@@ -42,20 +42,24 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
-        <url-pattern>/updateFuturepreneur</url-pattern>
+        <url-pattern>/getFuturepreneur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
-        <url-pattern>/updateUserAttribute</url-pattern>
+        <url-pattern>/updateFuturepreneur</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+<!--    <servlet-mapping>
+        <servlet-name>UsernameControl</servlet-name>
+        <url-pattern>/updateUserAttribute</url-pattern>
+    </servlet-mapping>-->
+<!--    <servlet-mapping>
         <servlet-name>MajorMinorControl</servlet-name>
         <url-pattern>/getMajorsForEdit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MajorMinorControl</servlet-name>
         <url-pattern>/getMinorsForEdit</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <session-config>
         <session-timeout>
             30

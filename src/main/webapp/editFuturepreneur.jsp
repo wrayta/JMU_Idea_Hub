@@ -140,6 +140,7 @@
                     </div>
                     </p>
 
+                    <p>
                     <div id="futureAcademicStanding">
                         <label>Academic Standing:</label>
 
@@ -161,7 +162,9 @@
                         </select>   
                         
                     </div>
+                    </p>
 
+                    <p>
                     <div id="futureMajor">
                         <label>Major:</label>
                         <select id="majorSelect" onchange="enableBeforeUnload();"
@@ -171,7 +174,9 @@
                             <option value="3">Biology</option>
                         </select>
                     </div>
+                    </p>
 
+                    <p>
                     <div id="futureMinor">
                         <label>Minor:</label>
                         <select id="minorSelect" onchange="enableBeforeUnload();"
@@ -181,6 +186,7 @@
                             <option value="3">English</option>
                         </select>
                     </div>
+                    </p>
 
                     <p>
                     <div id="futureGradDate">
@@ -255,7 +261,11 @@
 
             </form>
 
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        </div>
+
+        <!--<div style="clear: both;">&nbsp;</div>-->
+
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
             <script>
@@ -280,15 +290,25 @@
                                        //                    return confirm('Leave current page?');
                                        //                });
                                        
-                                       <%
-                                           Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
-                                       %> 
-                                       $('#futurepreneurFirstName').val("<%=user.getFirstName()%>");
-                                       $('#futurepreneurLastName').val("<%=user.getLastName()%>");
-                                       $('#futurepreneurEmail').val("<%=user.getEmail()%>");
-                                       $('#gpa').val("<%=user.getGpa()%>");
-                                       $('#majorSelect').val("<%=user.getMajor()%>");
-                                       $('#minorSelect').val("<%=user.getMinor()%>");
+                                       
+//                                           Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+                                       $.ajax({
+                                            type: "get",
+                                            url: "getFuturepreneur",
+                                            async: "true"
+                                        }).done(function(data) { 
+                                            console.log("Data: " + data);
+                                            var firstName=data[0], lastName=data[1], email=data[2], gpa=data[3], gradeLevel=data[4], major=data[5], minor=data[6], gradDate=data[7], userName=data[8];
+                                            $('#futurepreneurFirstName').val(firstName);
+                                            $('#futurepreneurLastName').val(lastName);
+                                            $('#futurepreneurEmail').val(email);
+                                            $('#gpa').val(parseFloat(gpa));
+                                            $('#gradeLevelSelect').val(gradeLevel);
+                                            $('#majorSelect').val(major);
+                                            $('#minorSelect').val(minor);
+                                            $('#year').val(gradDate);
+                                            $('#futurepreneurUsernameInputEditId').val(userName);
+                                       });
 //                                       $.ajax({
 //                                            type: "get",
 //                                            url: "getMajorsForEdit",
@@ -353,8 +373,7 @@
 //                                                return;
 //                                            }
 //                                        });
-                                       $('#year').val("<%=user.getGradDate()%>");
-                                       $('#futurepreneurUsernameInputEditId').val("<%=user.getUserName()%>");
+                                       
                                    });
 
                                    function enableBeforeUnload() {
@@ -366,9 +385,7 @@
                                        window.onbeforeunload = null;
                                    }
             </script>
-
-        </div>
-
+            
         <div style="clear: both;">&nbsp;</div>
 
     </body>

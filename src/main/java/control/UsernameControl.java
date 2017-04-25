@@ -5,6 +5,7 @@
  */
 package control;
 
+import com.google.gson.Gson;
 import dbCommand.UserUpdate;
 import dbQuery.UserQuery;
 import entities.ErrorChecker;
@@ -70,6 +71,8 @@ public class UsernameControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = null;
+        StringBuffer ajaxUrl = request.getRequestURL();
+        
         try {
             url = new URI(request.getHeader("referer")).getPath();
             System.out.println("Start of new url: " + url);
@@ -84,7 +87,9 @@ public class UsernameControl extends HttpServlet {
         } else if (request.getParameter("editedUsername") != null) {
             System.out.println("doGet check for editedUsername");
             doCheckEditedUsername(request, response);
-        } 
+        } else if (ajaxUrl.indexOf("getFuturepreneur") > 0) {
+            doRetrieveFuturepreneur(request, response);
+        }
     }
 
     /**
@@ -206,6 +211,36 @@ public class UsernameControl extends HttpServlet {
         }
     }
 
+    private void doRetrieveFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("application/json"); 
+        response.setCharacterEncoding("utf-8"); 
+
+        PrintWriter out = null;
+        
+        try {
+            out = response.getWriter();
+            Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+            
+            String firstName = new Gson().toJson(user.getFirstName()); 
+            String lastName = new Gson().toJson(user.getLastName()); 
+            String email = new Gson().toJson(user.getEmail());
+            String gpa = new Gson().toJson(user.getGpa());
+            String gradeLevel = new Gson().toJson(user.getAcademic());
+            String major = new Gson().toJson(user.getMajor());
+            String minor = new Gson().toJson(user.getMinor());
+            String graduationDate = new Gson().toJson(user.getGradDate());
+            String userName = new Gson().toJson(user.getUserName());
+            
+            
+            String futurepreneurJson = "["+firstName+","+lastName+","+email+","+gpa+","+gradeLevel+","+major+","+minor+","+graduationDate+","+userName+"]"; //Put both objects in an array of 2 elements
+            out.write(futurepreneurJson);            
+            
+
+        } catch (IOException ex) {
+            Logger.getLogger(UsernameControl.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+    }
+    
     private void doCheckUsername(HttpServletRequest request, HttpServletResponse response) {
         ErrorChecker errorCheck = new ErrorChecker();
         UserQuery userQ = new UserQuery();
