@@ -10,6 +10,7 @@ import dbCommand.UserUpdate;
 import dbQuery.UserQuery;
 import entities.ErrorChecker;
 import entities.Futurepreneur;
+import entities.Investor;
 import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -89,6 +90,8 @@ public class UsernameControl extends HttpServlet {
             doCheckEditedUsername(request, response);
         } else if (ajaxUrl.indexOf("getFuturepreneur") > 0) {
             doRetrieveFuturepreneur(request, response);
+        } else if (ajaxUrl.indexOf("getInvestor") > 0) {
+            doRetrieveInvestor(request, response);
         }
     }
 
@@ -210,6 +213,34 @@ public class UsernameControl extends HttpServlet {
 //            }
         }
     }
+    
+    private void doRetrieveInvestor(HttpServletRequest request, HttpServletResponse response) {
+        response.setContentType("application/json"); 
+        response.setCharacterEncoding("utf-8"); 
+
+        PrintWriter out = null;
+        
+        try {
+            out = response.getWriter();
+            User user = (Investor) (request.getSession().getAttribute("user"));
+            
+            String firstName = new Gson().toJson(user.getFirstName()); 
+            String lastName = new Gson().toJson(user.getLastName()); 
+            String email = new Gson().toJson(user.getEmail());
+            String occupation = new Gson().toJson(((Investor)(user)).getOccupation());
+            String interests = new Gson().toJson(((Investor)(user)).getInterest());
+            String website = new Gson().toJson(((Investor)(user)).getWebsite());
+            String userName = new Gson().toJson(user.getUserName());
+            
+            
+            String investorJson = "["+firstName+","+lastName+","+email+","+occupation+","+interests+","+website+","+userName+"]"; //Put both objects in an array of 2 elements
+            out.write(investorJson);            
+            
+
+        } catch (IOException ex) {
+            Logger.getLogger(UsernameControl.class.getName()).log(Level.SEVERE, null, ex);            
+        }
+    }
 
     private void doRetrieveFuturepreneur(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json"); 
@@ -219,16 +250,16 @@ public class UsernameControl extends HttpServlet {
         
         try {
             out = response.getWriter();
-            Futurepreneur user = (Futurepreneur) (request.getSession().getAttribute("user"));
+            User user = (Futurepreneur) (request.getSession().getAttribute("user"));
             
             String firstName = new Gson().toJson(user.getFirstName()); 
             String lastName = new Gson().toJson(user.getLastName()); 
             String email = new Gson().toJson(user.getEmail());
-            String gpa = new Gson().toJson(user.getGpa());
-            String gradeLevel = new Gson().toJson(user.getAcademic());
-            String major = new Gson().toJson(user.getMajor());
-            String minor = new Gson().toJson(user.getMinor());
-            String graduationDate = new Gson().toJson(user.getGradDate());
+            String gpa = new Gson().toJson(((Futurepreneur)(user)).getGpa());
+            String gradeLevel = new Gson().toJson(((Futurepreneur)(user)).getAcademic());
+            String major = new Gson().toJson(((Futurepreneur)(user)).getMajor());
+            String minor = new Gson().toJson(((Futurepreneur)(user)).getMinor());
+            String graduationDate = new Gson().toJson(((Futurepreneur)(user)).getGradDate());
             String userName = new Gson().toJson(user.getUserName());
             
             

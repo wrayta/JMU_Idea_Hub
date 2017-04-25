@@ -27,9 +27,6 @@ and open the template in the editor.
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ranga" rel="stylesheet">
         <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="style/formValidation.css"/>
-        <%
-            Investor user = (Investor) (request.getSession().getAttribute("user"));
-        %> 
 
         <script>
             function checkExist() {
@@ -82,11 +79,11 @@ and open the template in the editor.
                     <div id="investorFirstName">
                         <label>First Name:</label>
                         <input type="text" 
-                               value="<%=user.getFirstName()%>"
                                data-validation="alphanumeric" 
                                data-validation="required" 
                                data-validation-allowing="-_"
                                name="investorFirstName"
+                               id="invFirstName"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -95,11 +92,11 @@ and open the template in the editor.
                     <div id="investorLastName">
                         <label>Last Name:</label>
                         <input type="text" 
-                               value="<%=user.getLastName()%>"
                                data-validation="alphanumeric" 
                                data-validation="required" 
                                data-validation-allowing="-_"
                                name="investorLastName"
+                               id="invLastName"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -109,9 +106,9 @@ and open the template in the editor.
                     <div id="investorEmail">
                         <label>Email:</label>
                         <input type="text" 
-                               value="<%=user.getEmail()%>"
                                data-validation="email"
                                name="investorEmail"
+                               id="invEmail"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -121,9 +118,9 @@ and open the template in the editor.
                     <div id="investorOccupation">
                         <label>Occupation:</label>
                         <input type="text"
-                               value="<%=user.getOccupation()%>"
                                data-validation="alphanumeric"
                                name="occupation"
+                               id="invOccupation"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -133,7 +130,7 @@ and open the template in the editor.
                     <div id="investorInterests">
                         <label>Interests:</label>
                         <textarea id="interestTextArea" onchange="enableBeforeUnload();"
-                                  onkeyup="enableBeforeUnload();" name="interests"><%=user.getInterest()%></textarea>    
+                                  onkeyup="enableBeforeUnload();" name="interests"></textarea>    
                         <span id="max-length-element">200</span> <div id="charCount">chars left</div>
                     </div>
                     </p>
@@ -142,10 +139,10 @@ and open the template in the editor.
                     <div id="investorWebsite">
                         <label>Website:</label>
                         <input type="text"
-                               value="<%=user.getWebsite()%>"
                                data-validation="url"
                                data-validation-help="http://"
                                name="website" 
+                               id="invWebsite"
                                onchange="enableBeforeUnload();"
                                onkeyup="enableBeforeUnload();"/>
                     </div>
@@ -155,7 +152,6 @@ and open the template in the editor.
                     <div id="investorUserName">
                         <label>User Name:</label>
                         <input type="text" 
-                               value="<%=user.getUserName()%>"
                                data-validation="length alphanumeric" 
                                data-validation-length="3-12" 
                                data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
@@ -254,10 +250,23 @@ and open the template in the editor.
                                        $('form input[type=reset]').click(function() {
                                            return confirm('Are you sure you want to clear all fields?');
                                        });
+                                       
+                                       $.ajax({
+                                            type: "get",
+                                            url: "getInvestor",
+                                            async: "true"
+                                        }).done(function(data) { 
+                                            console.log("Data: " + data);
+                                            var firstName=data[0], lastName=data[1], email=data[2], occupation=data[3], interests=data[4], website=data[5], userName=data[6];
+                                            $('#invFirstName').val(firstName);
+                                            $('#invLastName').val(lastName);
+                                            $('#invEmail').val(email);
+                                            $('#invOccupation').val(occupation);
+                                            $('#interestTextArea').val(interests);
+                                            $('#invWebsite').val(website);
+                                            $('#investorUsernameInputEditId').val(userName);
+                                       });
 
-//                    $('form input[type=button]').click(function() {
-//                        return confirm('Leave current page?');
-//                    });
                                    });
 
                                    function enableBeforeUnload() {

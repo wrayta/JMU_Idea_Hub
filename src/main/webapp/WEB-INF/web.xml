@@ -46,6 +46,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsernameControl</servlet-name>
+        <url-pattern>/getInvestor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsernameControl</servlet-name>
         <url-pattern>/updateFuturepreneur</url-pattern>
     </servlet-mapping>
 <!--    <servlet-mapping>
