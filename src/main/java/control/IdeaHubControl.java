@@ -658,20 +658,22 @@ public class IdeaHubControl extends HttpServlet {
      */
     private void doSignIn(HttpServletRequest request, HttpServletResponse response) {
         HttpSession sesh = request.getSession(true);
-        UserQuery query = new UserQuery();
+        UserQuery userQuery = new UserQuery();
         IdeaQuery ideaQuery = new IdeaQuery();
         Calendar now = Calendar.getInstance();
         int month = (now.get(Calendar.MONTH));
 
-        if (query.checkPass(request.getParameter("user").toLowerCase(), IdeaHubControl.hashPassword(request.getParameter("password")))) {
+        if (userQuery.checkPass(request.getParameter("user").toLowerCase(), IdeaHubControl.hashPassword(request.getParameter("password")))) {
             sesh.setAttribute("loggedin", true);
-            sesh.setAttribute("accountNumber", new Integer(query.getAccountNum(request.getParameter("user"))));
+            sesh.setAttribute("accountNumber", new Integer(userQuery.getAccountNum(request.getParameter("user"))));
 //            sesh.setAttribute("firstName", query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber")));
-            if (!query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
-                sesh.setAttribute("user", (Futurepreneur) query.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+            if (!userQuery.isInv((Integer) sesh.getAttribute("accountNumber"))) {
+                sesh.setAttribute("user", (Futurepreneur) userQuery.getFut((Integer) (request.getSession().getAttribute("accountNumber"))));
+                sesh.setAttribute("isInvestor", false);
             }
             else {
-                sesh.setAttribute("user", (Investor) query.getInv((Integer) (request.getSession().getAttribute("accountNumber"))));
+                sesh.setAttribute("user", (Investor) userQuery.getInv((Integer) (request.getSession().getAttribute("accountNumber"))));
+                sesh.setAttribute("isInvestor", true);
             }
 
             String monthStr = getMonthForInt(month);
@@ -765,6 +767,8 @@ public class IdeaHubControl extends HttpServlet {
         sesh.setAttribute("loggedin", true);
         sesh.setAttribute("accountNumber", new Integer(query.getNextAccountNum()));
         sesh.setAttribute("user", (Investor) query.getInv((Integer) (sesh.getAttribute("accountNumber"))));
+        sesh.setAttribute("isInvestor", true);
+
 
         try {
             response.sendRedirect("./idea.jsp");
@@ -860,6 +864,7 @@ public class IdeaHubControl extends HttpServlet {
         sesh.setAttribute("loggedin", true);
         sesh.setAttribute("accountNumber", query.getNextAccountNum());
         sesh.setAttribute("user", (Futurepreneur) query.getFut((Integer) (sesh.getAttribute("accountNumber"))));
+        sesh.setAttribute("isInvestor", false);
 
 
         try {

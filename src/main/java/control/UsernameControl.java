@@ -224,7 +224,7 @@ public class UsernameControl extends HttpServlet {
         PrintWriter out = null;
         try {
             out = response.getWriter();
-            if (query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
+            if ((Boolean)(request.getSession().getAttribute("isInvestor"))) {
                 out.print("<a href=\"editInvestor.jsp\">Edit Profile</a>");
             } else {
                 out.print("<a href=\"editFuturepreneur.jsp\">Edit Profile</a>");
