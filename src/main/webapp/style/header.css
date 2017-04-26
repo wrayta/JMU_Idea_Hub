@@ -236,37 +236,37 @@ a:hover {
     color: #D9D9D9;
 }
 
-#editInvestor {
+#editUserProfile {
     display:inline-block;
     /*margin-left: 60px;*/
     margin-right: 20px;
     font-family: sans-serif; 
 }
 
-#editInvestor a {
+#editUserProfile a {
     /*    color: #FFFFFF;*/
     text-decoration: none;
 }
 
-#editInvestor a:hover {
+#editUserProfile a:hover {
     /*    color: #F2F2F2;*/
 }
 
-#editFuture {
+/*#editFuture {
     display:inline-block;
-    /*margin-left: 60px;*/
+    margin-left: 60px;
     margin-right: 20px;
     font-family: sans-serif; 
 }
 
 #editFuture a {
-    /*color: #FFFFFF;*/
+    color: #FFFFFF;
     text-decoration: none;
 }
 
 #editFuture a:hover {
-    /*color: #F2F2F2;*/
-}
+    color: #F2F2F2;
+}*/
 
 #bannerText {
 

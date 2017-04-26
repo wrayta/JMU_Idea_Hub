@@ -92,6 +92,8 @@ public class UsernameControl extends HttpServlet {
             doRetrieveFuturepreneur(request, response);
         } else if (ajaxUrl.indexOf("getInvestor") > 0) {
             doRetrieveInvestor(request, response);
+        } else if (ajaxUrl.indexOf("investorOrFuturepreneur") > 0) {
+            doIsInvestor(request, response);
         }
     }
 
@@ -211,6 +213,24 @@ public class UsernameControl extends HttpServlet {
 //            } catch (IOException ex) {
 //                Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
 //            }
+        }
+    }
+    
+    private void doIsInvestor(HttpServletRequest request, HttpServletResponse response) {
+        UserQuery query = new UserQuery();
+        String editInfo = null;
+
+        response.setContentType("text/text");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+            if (query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
+                out.print("<a href=\"editInvestor.jsp\">Edit Profile</a>");
+            } else {
+                out.print("<a href=\"editFuturepreneur.jsp\">Edit Profile</a>");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(UsernameControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

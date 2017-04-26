@@ -71,14 +71,14 @@
 
                 <%                    if ((Boolean) (session.getAttribute("loggedin"))) {
 
-                        UserQuery query = new UserQuery();
-                        String editInfo = null;
-
-                        if (query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
-                            editInfo = ("<div id=\"editInvestor\"><a href=\"editInvestor.jsp\">Edit Profile</a></div>");
-                        } else {
-                            editInfo = ("<div id=\"editFuture\"><a href=\"editFuturepreneur.jsp\">Edit Profile</a></div>");
-                        }
+//                        UserQuery query = new UserQuery();
+//                        String editInfo = null;
+//
+//                        if (query.isInv((Integer) request.getSession().getAttribute("accountNumber"))) {
+//                            editInfo = ("<div id=\"editInvestor\"></div>");
+//                        } else {
+//                            editInfo = ("<div id=\"editFuture\"><a href=\"editFuturepreneur.jsp\">Edit Profile</a></div>");
+//                        }
 
 //                        String firstName = query.getUserFirstName((Integer) request.getSession().getAttribute("accountNumber"));
 //                        System.out.println(((User)(request.getSession().getAttribute("user"))).getFirstName());
@@ -86,7 +86,7 @@
                         out.print("<div class=\"dropdown\">"
                                 + "<img id=\"profileDropDown\" src=\"img/signIn.bmp\">"
                                 + "<div class=\"dropdown-content\">"
-                                + editInfo
+                                + "<div id=\"editUserProfile\"></div>"
                                 + "<div id=\"logout\">"
                                 + "<a href=\"signInSignUp.jsp\">Log Out</a>"
                                 + "</div>"
@@ -105,6 +105,15 @@
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script>
             $(document).ready(function() {
+                $.ajax({
+                    type: "get",
+                    url: "investorOrFuturepreneur",
+                    async: "true"
+                }).done(function(data) {
+                   console.log("Data: " + data);
+                   $('#editUserProfile').append(data);
+                });
+                
                 $('#welcomeUserString span').text('Welcome!');
             });  
             </script>
