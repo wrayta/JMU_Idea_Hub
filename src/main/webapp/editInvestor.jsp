@@ -63,7 +63,11 @@ and open the template in the editor.
     </head>
     <body>
         <%
-            if (!(Boolean) request.getSession().getAttribute("loggedin")) {
+            if (request.getSession().getAttribute("loggedin") == null) {
+                response.sendRedirect("homepage.jsp");
+                return;
+            }
+            else if (!(Boolean) request.getSession().getAttribute("loggedin")) {
                 response.sendRedirect("homepage.jsp");
                 return;
             }
