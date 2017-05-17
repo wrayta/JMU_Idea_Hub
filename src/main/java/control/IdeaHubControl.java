@@ -31,6 +31,7 @@ import javax.servlet.http.HttpSession;
 import dbQuery.IdeaQuery;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+import java.util.Iterator;
 
 /**
  * Main servlet for the web application and handles most requests
@@ -81,11 +82,14 @@ public class IdeaHubControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("Inside doGet");
-
         RequestDispatcher dispatcher;
 
-        if (request.getParameter("ideaNum") != null) {
+        StringBuffer url = null;
+        url = request.getRequestURL();
+                
+        if (url.indexOf("getIdeaList") > 0) {
+            doGetIdeaList(request, response);
+        } else if (request.getParameter("ideaNum") != null) {
             dispatcher = getServletContext().getRequestDispatcher("/detIdea.jsp");
             dispatcher.forward(request, response);
         } else if (request.getParameter("accountNum") != null) {
@@ -98,7 +102,6 @@ public class IdeaHubControl extends HttpServlet {
             System.out.println("Inside currentMonth param");
             doGetIdeasForMonth(request, response);
         } else;
-        // I dont know what
 
     }
 
@@ -618,6 +621,69 @@ public class IdeaHubControl extends HttpServlet {
         return added;
     }
 
+    private void doGetIdeaList(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("Inside of doGetIdeaList");
+        
+        ArrayList<Object> ideaData = (ArrayList<Object>) (request.getSession().getAttribute("ideaData"));
+        
+        System.out.println("Size of ideaData: " + ideaData.size());
+        
+        if (ideaData != null && ideaData.size() > 0) {
+            Iterator it = ideaData.iterator();
+            int rows = ((Integer) it.next()).intValue(); // WHY IS THIS LIKE THISSSSSSSS
+            int counter = 1; 
+            UserQuery usQuery = new UserQuery();
+
+            response.setContentType("text/text");
+            PrintWriter out = null;
+            
+            try {
+                out = response.getWriter();
+
+                out.print("<div id=\"ideasList\">");
+
+                while (it.hasNext()) {
+                    Idea idea = (Idea) it.next();
+                    String name = usQuery.getUserFullName(idea.getAccountNumber());
+                    out.print(
+                        "<button class=\"accordion\""
+                        + ">"
+                        + "<div id=\"listIdeaTitle\">"
+                        + idea.getIdeaTitle()
+                        + "</div>"
+                        + "<div id=\"listIdeaAuthor\">"
+                        + name
+                        + "</div>"
+                        + "<div id=\"listIdeaDate\">"
+                        + idea.getDate()
+                        + "</div>"
+                        + "</button>"
+                        + "<div class=\"panel\">"
+                        + "<p>"
+                        + "<div id=\"listIdeaContent\">"
+                        + idea.getIdea()
+                        + "</div>"
+                        + "<div id=\"moreIdea\">"
+                        + "<a class=\"moreIdeaLink\" href=\"idea?ideaNum="
+                        + idea.getIdeaNumber() + "\">"
+                        + "See More..."
+                        + "</a>"
+                        + "</div>"
+                        + "</p>"
+                        + "</div>");
+
+                    counter++;
+                }
+
+                out.print("</div>");
+            } catch (IOException ex) {
+              
+              Logger.getLogger(IdeaHubControl.class.getName()).log(Level.SEVERE, null, ex);
+ 
+            }
+        }
+    }
+    
     /**
      *
      */
@@ -627,11 +693,13 @@ public class IdeaHubControl extends HttpServlet {
 
         IdeaQuery ideaQ = new IdeaQuery();
 
-//        ArrayList<Object> ideaData = ideaQ.getIdeas();
         ArrayList<Object> ideaData = ideaQ.getIdeasForMonth(request.getParameter("currentMonth"));
 
         sesh.setAttribute("ideaData", ideaData);
-        request.getRequestDispatcher("/idea.jsp").forward(request, response);
+        
+        doGetIdeaList(request, response);
+        
+//        request.getRequestDispatcher("/idea.jsp").forward(request, response);
 
     }
 

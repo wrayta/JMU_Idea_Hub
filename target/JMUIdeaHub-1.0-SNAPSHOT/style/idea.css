@@ -1,0 +1,552 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 17, 2017, 3:23:27 PM
+    Author     : thomas
+*/
+
+.ideaSubmit {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 0px 10px 20px 0px;
+    cursor: pointer;
+}
+
+.ideaReset {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 0px 35px 10px 10px;
+    cursor: pointer;
+}
+
+.ideaReset:hover {
+    background: #9370DB;
+}
+
+.ideaSubmit:hover {
+    background: #9370DB;
+}
+
+/*input::-webkit-input-placeholder  {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b;  
+}*/
+/*input:-moz-placeholder {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b; 
+}*/
+
+.userInput {
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 20px 0px;
+}
+
+textarea {
+    font-family: sans-serif;
+    font-size: 14px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 12px 20px 0px;
+    width: 540px;
+    resize: none;
+}
+
+/*textarea::-webkit-input-placeholder  {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b;  
+}
+
+textarea:-moz-placeholder {
+    color: #a1b2c3; 
+    text-shadow: 0px -1px 0px #38506b; 
+}*/
+
+/*#newIdeaContainer {
+    margin: 120px 0 0 0;
+    display: inline-block;
+}*/
+
+#ideaTitle {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+}
+
+#ideaTextArea {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+}
+
+#newIdeaContainer {
+    margin: 120px 0px 0px;
+    display: inline-block;
+    border-width: 1px;
+    border-color: rgb(68, 86, 104);
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    /*height: 150px;*/
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+div.panel {
+    padding: 0px 18px 0px 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-family: sans-serif;
+    font-size: 14px; 
+    color: #445668;
+    display: inline-block;
+}*/
+
+/*#ideasList {
+    margin: 40px 0 0 0;
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}*/
+
+/*#listIdeaTitle {
+    display: inline-block;
+    float: left;
+}*/
+
+/*#listIdeaAuthor {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 0 0 150px;
+}*/
+
+/*#listIdeaDate {
+    display: inline-block;
+    float: right;
+}*/
+
+#moreIdea {
+    display: inline-block;
+    float: right;
+    font-family: 'Ranga', cursive;
+    font-size: 18px;
+    transform: translateY(-25%);
+}
+
+/*#listIdeaContent {
+    display: inline-block;
+}*/
+
+/*a.moreIdeaLink {
+    display: inline-block;
+    text-decoration: none;
+    color: #440088;
+}
+
+a.moreIdeaLink:hover {
+    color: #9370DB;
+}*/
+
+/* Style the links inside the sidenav */
+#mySidenav a {
+    position: absolute; /* Position them relative to the browser window */
+    left: -80px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    /*font-size: 20px;  Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+    margin: 75px 0 0 0;
+}
+
+#mySidenav a:hover {
+    left: 0; /* On mouse-over, make the elements appear as they should */
+    background-color: #9370DB;
+}
+
+.month {
+    /*top: 20px;*/
+    background-color: #440088;
+    top: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/*#blog {
+    top: 80px;
+    background-color: #440088; 
+}
+
+#projects {
+    top: 140px;
+    background-color: #440088; 
+}
+
+#contact {
+    top: 200px;
+    background-color: #440088 
+}*/
+/******************************************************************************
+ *                                                                            *
+ *                                                                            *
+ *                        Styling for detIdea.jsp                             *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************/
+
+#oldPost {
+    margin: 120px 0px 0px;
+    display: inline-block;
+    border-width: 1px;
+    border-color: rgb(68, 86, 104);
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    /*height: 150px;*/
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#typeOfAccountPic {
+    margin: 10px 0px 0px 30px;
+}
+
+#detPostHeaderBar {
+    margin: 0px 0px 0px 10px;
+    display: inline-block;
+    float: right;
+}
+
+#postIdeaTitle {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+
+}
+
+#postIdeaContent {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+
+}
+
+#postAuthor {
+    display: inline-block;
+    margin: 10px 110px 0px 0px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(68, 86, 104);
+}
+
+#postDate {
+    display: inline-block;
+    margin: 10px 30px;
+    float: right;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(68, 86, 104);
+}
+
+#postSupports {
+    display: inline-block;
+    float: right;
+    margin: 0px 5px 8px 0px;
+    font-family: sans-serif;
+    font-size: 16px; 
+    color: #445668;
+}
+
+#supportImageButton {
+    display: inline-block;
+}
+
+#supportImageButton :hover {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+#supportImageButtonLiked {
+    display: inline-block;
+    /*    opacity: 0.4;
+        filter: alpha(opacity=40);  msie */
+}
+
+#supportImageButtonLiked :hover {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+#supportNumberLabel {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+#supportNumCounter {
+    font-family: sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    background: none repeat scroll 0% 0% transparent;
+    border: 1px solid transparent;
+    padding: 0px 0px 0px 0px;
+    width: 30px;
+}
+
+#lessIdea {
+    display: inline-block;
+    float: left;
+    font-family: 'Ranga', cursive;
+    font-size: 18px;
+    transform: translateY(-25%);
+    margin: 22px 0px 0px;
+}
+
+a.lessIdeaLink {
+    display: inline-block;
+    text-decoration: none;
+    color: #440088;
+}
+
+a.lessIdeaLink:hover {
+    color: #9370DB;
+}
+
+#userComment {
+    margin: 0px 0px 12px 30px;
+    display: inline-block;
+    border-width: 1px;
+    border-color: rgb(68, 86, 104);
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    width: 590px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#detCommentHeaderBar {
+    margin: 0px 0px 0px 10px;
+    display: inline-block;
+    float: right;
+}
+
+#commentAuthor {
+    display: inline-block;
+    margin: 10px 172px 0px 0px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(68, 86, 104);
+}
+
+#commentContent {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+}
+
+#detIdeaCommentSection {
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#commentSupports {
+    display: inline-block;
+    float: right;
+    margin: 0px 5px 8px 0px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(68, 86, 104);
+}
+
+#commentSupportImageButton {
+    display: inline-block;
+}
+
+#commentSupportImageButton :hover {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+#commentSupportImageButtonLiked {
+    display: inline-block;
+}
+
+#commentSupportImageButtonLiked :hover {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+#commentSupportNumberLabel {
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 0px 0px 0px 0px;
+}
+
+.commentSupportNumClass {
+    font-family: sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    background: none repeat scroll 0% 0% transparent;
+    border: 1px solid transparent;
+    padding: 0px 0px 0px 0px;
+    width: 30px;
+}
+
+#commentDate {
+    display: inline-block;
+    margin: 10px 30px;
+    float: right;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(68, 86, 104);
+}
+
+#newCommentContainer {
+    display: inline-block;
+    margin: 0px 0px 0px 30px;
+    width: 620px;
+}
+
+#commentTextArea {
+    display: inline-block;
+    padding: 12px 6px 0px 20px;
+    border-radius: 0px 0px 0px 0px;
+    float: right;
+    width: 560px;
+}
+
+.commentReadOnlyTextArea {
+    width: 480px;
+}
+
+.commentSubmit {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+
+.commentReset {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 20px 0px 10px 10px;
+    cursor: pointer;
+}
+
+.commentReset:hover {
+    background: #9370DB;
+}
+
+.commentSubmit:hover {
+    background: #9370DB;
+}
+
+.postEdit {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 12px 0px 10px 10px;
+    cursor: pointer;
+}
+
+.postEdit:hover {
+    background: #9370DB;
+}
+
+.postDelete {
+    display: inline-block;
+    padding: 4px 20px 4px 20px;
+    background: none repeat scroll 0% 0% rgb(68, 0, 136);
+    border-radius: 5px 5px 5px 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(242, 242, 242);
+    text-shadow: 0px -1px 0px rgb(51, 79, 113);
+    float: right;
+    margin: 12px 0px 10px 10px;
+    cursor: pointer;
+}
+
+.postDelete:hover {
+    background: #9370DB;
+}
+
+#postOptions {
+    height: 60px;
+    width: 650px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/*#commentSupportNumCounter {
+    font-family: sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    background: none repeat scroll 0% 0% transparent;
+    border: 1px solid transparent;
+    padding: 0px 0px 0px 0px;
+    width: 30px;
+}*/

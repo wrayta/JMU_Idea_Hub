@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 12, 2017, 7:14:03 PM
+    Author     : thomas
+*/
+
+html {
+/*    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;*/
+    /*background: url(../img/shaking-hands.jpg);*/ 
+    /*background-repeat:no-repeat;*/
+    
+    background: url(../img/shaking-hands.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+

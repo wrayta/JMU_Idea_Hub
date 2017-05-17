@@ -217,8 +217,6 @@ public class UsernameControl extends HttpServlet {
     }
     
     private void doIsInvestor(HttpServletRequest request, HttpServletResponse response) {
-        UserQuery query = new UserQuery();
-        String editInfo = null;
 
         response.setContentType("text/text");
         PrintWriter out = null;
